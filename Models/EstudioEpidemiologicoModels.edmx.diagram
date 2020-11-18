@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f594c6cf07d64158a20ed91e20861ccb" Name="Diagram1">
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Antecedentes" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Contactos" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.DatosClinicos" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.DatosGenerales" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.DatosNotificante" Width="1.5" PointX="0.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.DatosUnidadMedica" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Evolucion" Width="1.5" PointX="5.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.InformacionFormato" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Laboratorio" Width="1.5" PointX="5.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Tratamiento" Width="1.5" PointX="5.25" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Viaje" Width="1.5" PointX="5.25" PointY="35.875" IsExpanded="true" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Antecedentes_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Contactos_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_DatosClinicos_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_DatosGenerales_Notificante" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_DatosUnidadMedica_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Evolucion_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_InfFormato_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Laboratorio_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Tratamiento_DatosGenerales" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Viaje_DatosGenerales" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

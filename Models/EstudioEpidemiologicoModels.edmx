@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EstudioEpidemiologicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Antecedentes">
+          <Key>
+            <PropertyRef Name="IdAntecedentes" />
+          </Key>
+          <Property Name="IdAntecedentes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="ViajoChina14dPrevInicioSintomas" Type="bit" Nullable="false" />
+          <Property Name="ResidenteChina" Type="bit" Nullable="false" />
+          <Property Name="FechaViajeChina" Type="datetime" />
+          <Property Name="AerolineaVueloLlegadaMexico" Type="varchar" MaxLength="50" />
+          <Property Name="FechaLlegadaMexico" Type="datetime" />
+          <Property Name="ContactoPersonaSintomasRespiratorios" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="LugarContactoPersonas" Type="smallint" />
+          <Property Name="ContactoAnimales" Type="bit" Nullable="false" />
+          <Property Name="CualAnimal" Type="varchar" MaxLength="50" />
+          <Property Name="TipoContactoAnimal" Type="smallint" />
+          <Property Name="VisitoMercadoVentaAnimales" Type="bit" Nullable="false" />
+          <Property Name="LugarMercadoVentaAnimales" Type="varchar" MaxLength="50" />
+          <Property Name="FechaVisitaMercado" Type="datetime" />
+          <Property Name="Ult14dContacCercanoPersSospCoV" Type="bit" Nullable="false" />
+          <Property Name="Ult14dContacCercanoPersCorfiLabCoV" Type="bit" Nullable="false" />
+          <Property Name="ContacPersViajChina14dPrevIniSintomas" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="IdContacto" />
+          </Key>
+          <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Edad" Type="smallint" Nullable="false" />
+          <Property Name="TipoContactoIDoED" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SignosSintomas" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatosClinicos">
+          <Key>
+            <PropertyRef Name="IdDatosClinicos" />
+          </Key>
+          <Property Name="IdDatosClinicos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="FechaInicioSintomas" Type="datetime" />
+          <Property Name="Fiebre" Type="bit" Nullable="false" />
+          <Property Name="Tos" Type="bit" Nullable="false" />
+          <Property Name="DolorToracico" Type="bit" Nullable="false" />
+          <Property Name="DificultadRespiratoria" Type="bit" Nullable="false" />
+          <Property Name="Cefalea" Type="bit" Nullable="false" />
+          <Property Name="Irritabilidad" Type="bit" Nullable="false" />
+          <Property Name="Diarrea" Type="bit" Nullable="false" />
+          <Property Name="Vomito" Type="bit" Nullable="false" />
+          <Property Name="Calosfrios" Type="bit" Nullable="false" />
+          <Property Name="DolorAbdominal" Type="bit" Nullable="false" />
+          <Property Name="Mialgias" Type="bit" Nullable="false" />
+          <Property Name="Artralgias" Type="bit" Nullable="false" />
+          <Property Name="AtaqueAlEdoGral" Type="bit" Nullable="false" />
+          <Property Name="Rinorrea" Type="bit" Nullable="false" />
+          <Property Name="Polipnea" Type="bit" Nullable="false" />
+          <Property Name="Odinofagia" Type="bit" Nullable="false" />
+          <Property Name="Conjuntivitis" Type="bit" Nullable="false" />
+          <Property Name="Cianosis" Type="bit" Nullable="false" />
+          <Property Name="Convulsiones" Type="bit" Nullable="false" />
+          <Property Name="OtroSintoma" Type="varchar" MaxLength="50" />
+          <Property Name="Diabetes" Type="bit" Nullable="false" />
+          <Property Name="EPOC" Type="bit" Nullable="false" />
+          <Property Name="Asma" Type="bit" Nullable="false" />
+          <Property Name="Inmunosupresion" Type="bit" Nullable="false" />
+          <Property Name="Hipertension" Type="bit" Nullable="false" />
+          <Property Name="VihSida" Type="bit" Nullable="false" />
+          <Property Name="EnfermedadCardio" Type="bit" Nullable="false" />
+          <Property Name="Obesidad" Type="bit" Nullable="false" />
+          <Property Name="InsuficienciaRenalCronica" Type="bit" Nullable="false" />
+          <Property Name="InsuficienciaHepaticaCronica" Type="bit" Nullable="false" />
+          <Property Name="Tabaquismo" Type="bit" Nullable="false" />
+          <Property Name="OtroCoMorbilidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DatosGenerales">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaIngresoUnidad" Type="datetime" Nullable="false" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NacimientoDía" Type="smallint" Nullable="false" />
+          <Property Name="NacimientoMes" Type="smallint" Nullable="false" />
+          <Property Name="NacimientoAnio" Type="smallint" Nullable="false" />
+          <Property Name="Edad" Type="smallint" Nullable="false" />
+          <Property Name="CURP" Type="varchar" MaxLength="18" />
+          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Embarazada" Type="bit" />
+          <Property Name="MesesEmbarazo" Type="smallint" />
+          <Property Name="EnPeriodoPuerperio" Type="bit" />
+          <Property Name="DiasPuerperio" Type="smallint" />
+          <Property Name="Nacionalidad" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PaisOrigen" Type="varchar" MaxLength="50" />
+          <Property Name="NoExpedienteSeguridadSocial" Type="varchar" MaxLength="30" />
+          <Property Name="EntidadNacimiento" Type="varchar" MaxLength="50" />
+          <Property Name="EntidadDelegacionResidencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MunicipioResidencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Localidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoExterno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NoInterno" Type="varchar" MaxLength="20" />
+          <Property Name="EntreCalles" Type="varchar" MaxLength="50" />
+          <Property Name="YCalle" Type="varchar" MaxLength="50" />
+          <Property Name="Colonia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CP" Type="char" MaxLength="5" />
+          <Property Name="Telefono" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SeReconoceIndigena" Type="bit" Nullable="false" />
+          <Property Name="HablaAlgunaLenguaIndigena" Type="bit" Nullable="false" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EsMigrante" Type="bit" Nullable="false" />
+          <Property Name="PagoRealizado" Type="bit" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="FechaImpresion" Type="datetime" />
+          <Property Name="FechaPrueba" Type="datetime" />
+          <Property Name="IdUnidadNotificante" Type="int" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatosNotificante">
+          <Key>
+            <PropertyRef Name="IdUnidadNotificante" />
+          </Key>
+          <Property Name="IdUnidadNotificante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Jurisdiccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Municipio" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreUnidadMedica" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Institucion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLUES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreQuienElaboro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CargoQuienElaboro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreQuienAutorizo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CargoQuienAutorizo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactoTelefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactoCorreoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatosUnidadMedica">
+          <Key>
+            <PropertyRef Name="IdDatosUnidadMedica" />
+          </Key>
+          <Property Name="IdDatosUnidadMedica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="ServicioIngreso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipPaciente" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaIngresoUnidad" Type="datetime" Nullable="false" />
+          <Property Name="CasoIngresadoUCI" Type="bit" Nullable="false" />
+          <Property Name="CasoIntubado" Type="bit" Nullable="false" />
+          <Property Name="CasoDiagnostNeumoniaClinica" Type="bit" Nullable="false" />
+          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evolucion">
+          <Key>
+            <PropertyRef Name="IdEvolucion" />
+          </Key>
+          <Property Name="IdEvolucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Evolucion" Type="smallint" Nullable="false" />
+          <Property Name="FechaEgreso" Type="datetime" />
+          <Property Name="FechaDefunción" Type="datetime" />
+          <Property Name="FolioCertificadoDefunción" Type="varchar" MaxLength="50" />
+          <Property Name="Defuncion2019nCoV" Type="bit" />
+        </EntityType>
+        <EntityType Name="InformacionFormato">
+          <Key>
+            <PropertyRef Name="IdInfFormato" />
+          </Key>
+          <Property Name="IdInfFormato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="NombreQuienElaboro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CargoQuienElaboro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreQuienAutorizo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CargoQuienAutorizo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaElaboracion" Type="datetime" Nullable="false" />
+          <Property Name="ContactoTelefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactoCorreoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Laboratorio">
+          <Key>
+            <PropertyRef Name="IdLaboratorio" />
+          </Key>
+          <Property Name="IdLaboratorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="SeTomoMuestraPaciente" Type="bit" Nullable="false" />
+          <Property Name="LaboratorioDiagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="ExudadoFaringeo" Type="bit" />
+          <Property Name="ExudadoNasofaringeo" Type="bit" />
+          <Property Name="LavadoBronquial" Type="bit" />
+          <Property Name="BiopsiaPulmon" Type="bit" />
+          <Property Name="FechaTomaMuestra" Type="datetime" />
+          <Property Name="FechaEnvioMuestra" Type="datetime" />
+          <Property Name="FechaRecepcionMuestra" Type="datetime" />
+          <Property Name="FechaResultado" Type="datetime" />
+          <Property Name="Resultado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tratamiento">
+          <Key>
+            <PropertyRef Name="IdTratamiento" />
+          </Key>
+          <Property Name="IdTratamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="RecibioTrataAntipireticoAnalgesico" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaInicioTrataAntipireticoAnalgesico" Type="datetime" />
+          <Property Name="Paracetamol" Type="bit" Nullable="false" />
+          <Property Name="Ibuprofeno" Type="bit" Nullable="false" />
+          <Property Name="AcidoAcetilsalicilico" Type="bit" Nullable="false" />
+          <Property Name="ClonixinatoLisina" Type="bit" Nullable="false" />
+          <Property Name="Naproxeno" Type="bit" Nullable="false" />
+          <Property Name="Proxicam" Type="bit" Nullable="false" />
+          <Property Name="MetamizolSodico" Type="bit" Nullable="false" />
+          <Property Name="Diclofenaco" Type="bit" Nullable="false" />
+          <Property Name="Ketorolaco" Type="bit" Nullable="false" />
+          <Property Name="OtroAntipireticoAnalgesico" Type="bit" />
+          <Property Name="RecibioTrataAntiviral" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaInicioTrataAntiviral" Type="datetime" />
+          <Property Name="Amantadina" Type="bit" Nullable="false" />
+          <Property Name="Rimantadina" Type="bit" Nullable="false" />
+          <Property Name="Oseltamivir" Type="bit" Nullable="false" />
+          <Property Name="Zanamivir" Type="bit" Nullable="false" />
+          <Property Name="Peramivir" Type="bit" Nullable="false" />
+          <Property Name="Ribavirina" Type="bit" Nullable="false" />
+          <Property Name="OtroAntiviral" Type="varchar" MaxLength="50" />
+          <Property Name="RecibioTrataAntibiotico" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaInicioTrataAntibiotico" Type="datetime" />
+          <Property Name="Penicilina" Type="bit" Nullable="false" />
+          <Property Name="Dicloxacilina" Type="bit" Nullable="false" />
+          <Property Name="Ampicilina" Type="bit" Nullable="false" />
+          <Property Name="Amikacina" Type="bit" Nullable="false" />
+          <Property Name="Doxiciclina" Type="bit" Nullable="false" />
+          <Property Name="Cefalosporina" Type="bit" Nullable="false" />
+          <Property Name="Clindamicina" Type="bit" Nullable="false" />
+          <Property Name="Claritromicina" Type="bit" Nullable="false" />
+          <Property Name="Ciprofloxacino" Type="bit" Nullable="false" />
+          <Property Name="Meropenem" Type="bit" Nullable="false" />
+          <Property Name="Vancomicina" Type="bit" Nullable="false" />
+          <Property Name="AmoxicilinaAcClauvulanico" Type="bit" Nullable="false" />
+          <Property Name="OtrosAntibioticos" Type="bit" />
+        </EntityType>
+        <EntityType Name="Viaje">
+          <Key>
+            <PropertyRef Name="IdViaje" />
+          </Key>
+          <Property Name="IdViaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaLlegada" Type="datetime" Nullable="false" />
+          <Property Name="FechaSalida" Type="datetime" Nullable="false" />
+          <Property Name="AerolineaVuelo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Antecedentes_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Antecedentes" Type="Self.Antecedentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Antecedentes">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactos_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Contactos" Type="Self.Contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Contactos">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosClinicos_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="DatosClinicos" Type="Self.DatosClinicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DatosClinicos">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosGenerales_Notificante">
+          <End Role="DatosNotificante" Type="Self.DatosNotificante" Multiplicity="1" />
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosNotificante">
+              <PropertyRef Name="IdUnidadNotificante" />
+            </Principal>
+            <Dependent Role="DatosGenerales">
+              <PropertyRef Name="IdUnidadNotificante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosUnidadMedica_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="DatosUnidadMedica" Type="Self.DatosUnidadMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DatosUnidadMedica">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evolucion_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Evolucion" Type="Self.Evolucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Evolucion">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfFormato_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="InformacionFormato" Type="Self.InformacionFormato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="InformacionFormato">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratorio_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Laboratorio">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tratamiento_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Tratamiento" Type="Self.Tratamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Tratamiento">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viaje_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Viaje" Type="Self.Viaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Viaje">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstudioEpidemiologicoModelStoreContainer">
+          <EntitySet Name="Antecedentes" EntityType="Self.Antecedentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatosClinicos" EntityType="Self.DatosClinicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatosGenerales" EntityType="Self.DatosGenerales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatosNotificante" EntityType="Self.DatosNotificante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatosUnidadMedica" EntityType="Self.DatosUnidadMedica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evolucion" EntityType="Self.Evolucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformacionFormato" EntityType="Self.InformacionFormato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laboratorio" EntityType="Self.Laboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tratamiento" EntityType="Self.Tratamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Viaje" EntityType="Self.Viaje" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Antecedentes_DatosGenerales" Association="Self.FK_Antecedentes_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Antecedentes" EntitySet="Antecedentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactos_DatosGenerales" Association="Self.FK_Contactos_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Contactos" EntitySet="Contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosClinicos_DatosGenerales" Association="Self.FK_DatosClinicos_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="DatosClinicos" EntitySet="DatosClinicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosGenerales_Notificante" Association="Self.FK_DatosGenerales_Notificante">
+            <End Role="DatosNotificante" EntitySet="DatosNotificante" />
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosUnidadMedica_DatosGenerales" Association="Self.FK_DatosUnidadMedica_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="DatosUnidadMedica" EntitySet="DatosUnidadMedica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evolucion_DatosGenerales" Association="Self.FK_Evolucion_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Evolucion" EntitySet="Evolucion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfFormato_DatosGenerales" Association="Self.FK_InfFormato_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="InformacionFormato" EntitySet="InformacionFormato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratorio_DatosGenerales" Association="Self.FK_Laboratorio_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Laboratorio" EntitySet="Laboratorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tratamiento_DatosGenerales" Association="Self.FK_Tratamiento_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Tratamiento" EntitySet="Tratamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viaje_DatosGenerales" Association="Self.FK_Viaje_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Viaje" EntitySet="Viaje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EstudioEpidemiologicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Antecedentes">
+          <Key>
+            <PropertyRef Name="IdAntecedentes" />
+          </Key>
+          <Property Name="IdAntecedentes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="ViajoChina14dPrevInicioSintomas" Type="Boolean" Nullable="false" />
+          <Property Name="ResidenteChina" Type="Boolean" Nullable="false" />
+          <Property Name="FechaViajeChina" Type="DateTime" Precision="3" />
+          <Property Name="AerolineaVueloLlegadaMexico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaLlegadaMexico" Type="DateTime" Precision="3" />
+          <Property Name="ContactoPersonaSintomasRespiratorios" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LugarContactoPersonas" Type="Int16" />
+          <Property Name="ContactoAnimales" Type="Boolean" Nullable="false" />
+          <Property Name="CualAnimal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoContactoAnimal" Type="Int16" />
+          <Property Name="VisitoMercadoVentaAnimales" Type="Boolean" Nullable="false" />
+          <Property Name="FechaVisitaMercado" Type="DateTime" Precision="3" />
+          <Property Name="Ult14dContacCercanoPersSospCoV" Type="Boolean" Nullable="false" />
+          <Property Name="Ult14dContacCercanoPersCorfiLabCoV" Type="Boolean" Nullable="false" />
+          <Property Name="ContacPersViajChina14dPrevIniSintomas" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Antecedentes_DatosGenerales" FromRole="Antecedentes" ToRole="DatosGenerales" />
+          <Property Name="LugarMercadoVentaAnimales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="IdContacto" />
+          </Key>
+          <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="Int16" Nullable="false" />
+          <Property Name="TipoContactoIDoED" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SignosSintomas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Contactos_DatosGenerales" FromRole="Contactos" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="DatosClinicos">
+          <Key>
+            <PropertyRef Name="IdDatosClinicos" />
+          </Key>
+          <Property Name="IdDatosClinicos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicioSintomas" Type="DateTime" Precision="3" />
+          <Property Name="Fiebre" Type="Boolean" Nullable="false" />
+          <Property Name="Tos" Type="Boolean" Nullable="false" />
+          <Property Name="DolorToracico" Type="Boolean" Nullable="false" />
+          <Property Name="DificultadRespiratoria" Type="Boolean" Nullable="false" />
+          <Property Name="Cefalea" Type="Boolean" Nullable="false" />
+          <Property Name="Irritabilidad" Type="Boolean" Nullable="false" />
+          <Property Name="Diarrea" Type="Boolean" Nullable="false" />
+          <Property Name="Vomito" Type="Boolean" Nullable="false" />
+          <Property Name="Calosfrios" Type="Boolean" Nullable="false" />
+          <Property Name="DolorAbdominal" Type="Boolean" Nullable="false" />
+          <Property Name="Mialgias" Type="Boolean" Nullable="false" />
+          <Property Name="Artralgias" Type="Boolean" Nullable="false" />
+          <Property Name="AtaqueAlEdoGral" Type="Boolean" Nullable="false" />
+          <Property Name="Rinorrea" Type="Boolean" Nullable="false" />
+          <Property Name="Polipnea" Type="Boolean" Nullable="false" />
+          <Property Name="Odinofagia" Type="Boolean" Nullable="false" />
+          <Property Name="Conjuntivitis" Type="Boolean" Nullable="false" />
+          <Property Name="Cianosis" Type="Boolean" Nullable="false" />
+          <Property Name="Convulsiones" Type="Boolean" Nullable="false" />
+          <Property Name="OtroSintoma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Diabetes" Type="Boolean" Nullable="false" />
+          <Property Name="EPOC" Type="Boolean" Nullable="false" />
+          <Property Name="Asma" Type="Boolean" Nullable="false" />
+          <Property Name="Inmunosupresion" Type="Boolean" Nullable="false" />
+          <Property Name="Hipertension" Type="Boolean" Nullable="false" />
+          <Property Name="VihSida" Type="Boolean" Nullable="false" />
+          <Property Name="EnfermedadCardio" Type="Boolean" Nullable="false" />
+          <Property Name="Obesidad" Type="Boolean" Nullable="false" />
+          <Property Name="InsuficienciaRenalCronica" Type="Boolean" Nullable="false" />
+          <Property Name="InsuficienciaHepaticaCronica" Type="Boolean" Nullable="false" />
+          <Property Name="Tabaquismo" Type="Boolean" Nullable="false" />
+          <Property Name="OtroCoMorbilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_DatosClinicos_DatosGenerales" FromRole="DatosClinicos" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="DatosGenerales">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaIngresoUnidad" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NacimientoDía" Type="Int16" Nullable="false" />
+          <Property Name="NacimientoMes" Type="Int16" Nullable="false" />
+          <Property Name="NacimientoAnio" Type="Int16" Nullable="false" />
+          <Property Name="Edad" Type="Int16" Nullable="false" />
+          <Property Name="CURP" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Embarazada" Type="Boolean" />
+          <Property Name="MesesEmbarazo" Type="Int16" />
+          <Property Name="EnPeriodoPuerperio" Type="Boolean" />
+          <Property Name="DiasPuerperio" Type="Int16" />
+          <Property Name="Nacionalidad" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PaisOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoExpedienteSeguridadSocial" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EntidadNacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntidadDelegacionResidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MunicipioResidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoExterno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoInterno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EntreCalles" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YCalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SeReconoceIndigena" Type="Boolean" Nullable="false" />
+          <Property Name="HablaAlgunaLenguaIndigena" Type="Boolean" Nullable="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EsMigrante" Type="Boolean" Nullable="false" />
+          <Property Name="PagoRealizado" Type="Boolean" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="FechaImpresion" Type="DateTime" Precision="3" />
+          <Property Name="FechaPrueba" Type="DateTime" Precision="3" />
+          <Property Name="IdUnidadNotificante" Type="Int32" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Antecedentes" Relationship="Self.FK_Antecedentes_DatosGenerales" FromRole="DatosGenerales" ToRole="Antecedentes" />
+          <NavigationProperty Name="Contactos" Relationship="Self.FK_Contactos_DatosGenerales" FromRole="DatosGenerales" ToRole="Contactos" />
+          <NavigationProperty Name="DatosClinicos" Relationship="Self.FK_DatosClinicos_DatosGenerales" FromRole="DatosGenerales" ToRole="DatosClinicos" />
+          <NavigationProperty Name="DatosNotificante" Relationship="Self.FK_DatosGenerales_Notificante" FromRole="DatosGenerales" ToRole="DatosNotificante" />
+          <NavigationProperty Name="DatosUnidadMedica" Relationship="Self.FK_DatosUnidadMedica_DatosGenerales" FromRole="DatosGenerales" ToRole="DatosUnidadMedica" />
+          <NavigationProperty Name="Evolucion" Relationship="Self.FK_Evolucion_DatosGenerales" FromRole="DatosGenerales" ToRole="Evolucion" />
+          <NavigationProperty Name="InformacionFormato" Relationship="Self.FK_InfFormato_DatosGenerales" FromRole="DatosGenerales" ToRole="InformacionFormato" />
+          <NavigationProperty Name="Laboratorio" Relationship="Self.FK_Laboratorio_DatosGenerales" FromRole="DatosGenerales" ToRole="Laboratorio" />
+          <NavigationProperty Name="Tratamiento" Relationship="Self.FK_Tratamiento_DatosGenerales" FromRole="DatosGenerales" ToRole="Tratamiento" />
+          <NavigationProperty Name="Viaje" Relationship="Self.FK_Viaje_DatosGenerales" FromRole="DatosGenerales" ToRole="Viaje" />
+        </EntityType>
+        <EntityType Name="DatosNotificante">
+          <Key>
+            <PropertyRef Name="IdUnidadNotificante" />
+          </Key>
+          <Property Name="IdUnidadNotificante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Jurisdiccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Municipio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreUnidadMedica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Institucion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLUES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreQuienElaboro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CargoQuienElaboro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreQuienAutorizo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CargoQuienAutorizo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactoTelefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactoCorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_DatosGenerales_Notificante" FromRole="DatosNotificante" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="DatosUnidadMedica">
+          <Key>
+            <PropertyRef Name="IdDatosUnidadMedica" />
+          </Key>
+          <Property Name="IdDatosUnidadMedica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="ServicioIngreso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipPaciente" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngresoUnidad" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CasoIngresadoUCI" Type="Boolean" Nullable="false" />
+          <Property Name="CasoIntubado" Type="Boolean" Nullable="false" />
+          <Property Name="CasoDiagnostNeumoniaClinica" Type="Boolean" Nullable="false" />
+          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_DatosUnidadMedica_DatosGenerales" FromRole="DatosUnidadMedica" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="Evolucion">
+          <Key>
+            <PropertyRef Name="IdEvolucion" />
+          </Key>
+          <Property Name="IdEvolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Evolucion1" Type="Int16" Nullable="false" />
+          <Property Name="FechaEgreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaDefunción" Type="DateTime" Precision="3" />
+          <Property Name="FolioCertificadoDefunción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Defuncion2019nCoV" Type="Boolean" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Evolucion_DatosGenerales" FromRole="Evolucion" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="InformacionFormato">
+          <Key>
+            <PropertyRef Name="IdInfFormato" />
+          </Key>
+          <Property Name="IdInfFormato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="NombreQuienElaboro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CargoQuienElaboro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreQuienAutorizo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CargoQuienAutorizo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaElaboracion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContactoTelefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactoCorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_InfFormato_DatosGenerales" FromRole="InformacionFormato" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="Laboratorio">
+          <Key>
+            <PropertyRef Name="IdLaboratorio" />
+          </Key>
+          <Property Name="IdLaboratorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="SeTomoMuestraPaciente" Type="Boolean" Nullable="false" />
+          <Property Name="LaboratorioDiagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExudadoFaringeo" Type="Boolean" />
+          <Property Name="ExudadoNasofaringeo" Type="Boolean" />
+          <Property Name="LavadoBronquial" Type="Boolean" />
+          <Property Name="BiopsiaPulmon" Type="Boolean" />
+          <Property Name="FechaTomaMuestra" Type="DateTime" Precision="3" />
+          <Property Name="FechaEnvioMuestra" Type="DateTime" Precision="3" />
+          <Property Name="FechaRecepcionMuestra" Type="DateTime" Precision="3" />
+          <Property Name="FechaResultado" Type="DateTime" Precision="3" />
+          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Laboratorio_DatosGenerales" FromRole="Laboratorio" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="Tratamiento">
+          <Key>
+            <PropertyRef Name="IdTratamiento" />
+          </Key>
+          <Property Name="IdTratamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="RecibioTrataAntipireticoAnalgesico" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FechaInicioTrataAntipireticoAnalgesico" Type="DateTime" Precision="3" />
+          <Property Name="Paracetamol" Type="Boolean" Nullable="false" />
+          <Property Name="Ibuprofeno" Type="Boolean" Nullable="false" />
+          <Property Name="AcidoAcetilsalicilico" Type="Boolean" Nullable="false" />
+          <Property Name="ClonixinatoLisina" Type="Boolean" Nullable="false" />
+          <Property Name="Naproxeno" Type="Boolean" Nullable="false" />
+          <Property Name="Proxicam" Type="Boolean" Nullable="false" />
+          <Property Name="MetamizolSodico" Type="Boolean" Nullable="false" />
+          <Property Name="Diclofenaco" Type="Boolean" Nullable="false" />
+          <Property Name="Ketorolaco" Type="Boolean" Nullable="false" />
+          <Property Name="OtroAntipireticoAnalgesico" Type="Boolean" />
+          <Property Name="RecibioTrataAntiviral" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FechaInicioTrataAntiviral" Type="DateTime" Precision="3" />
+          <Property Name="Amantadina" Type="Boolean" Nullable="false" />
+          <Property Name="Rimantadina" Type="Boolean" Nullable="false" />
+          <Property Name="Oseltamivir" Type="Boolean" Nullable="false" />
+          <Property Name="Zanamivir" Type="Boolean" Nullable="false" />
+          <Property Name="Peramivir" Type="Boolean" Nullable="false" />
+          <Property Name="Ribavirina" Type="Boolean" Nullable="false" />
+          <Property Name="OtroAntiviral" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecibioTrataAntibiotico" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FechaInicioTrataAntibiotico" Type="DateTime" Precision="3" />
+          <Property Name="Penicilina" Type="Boolean" Nullable="false" />
+          <Property Name="Dicloxacilina" Type="Boolean" Nullable="false" />
+          <Property Name="Ampicilina" Type="Boolean" Nullable="false" />
+          <Property Name="Amikacina" Type="Boolean" Nullable="false" />
+          <Property Name="Doxiciclina" Type="Boolean" Nullable="false" />
+          <Property Name="Cefalosporina" Type="Boolean" Nullable="false" />
+          <Property Name="Clindamicina" Type="Boolean" Nullable="false" />
+          <Property Name="Claritromicina" Type="Boolean" Nullable="false" />
+          <Property Name="Ciprofloxacino" Type="Boolean" Nullable="false" />
+          <Property Name="Meropenem" Type="Boolean" Nullable="false" />
+          <Property Name="Vancomicina" Type="Boolean" Nullable="false" />
+          <Property Name="AmoxicilinaAcClauvulanico" Type="Boolean" Nullable="false" />
+          <Property Name="OtrosAntibioticos" Type="Boolean" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Tratamiento_DatosGenerales" FromRole="Tratamiento" ToRole="DatosGenerales" />
+        </EntityType>
+        <EntityType Name="Viaje">
+          <Key>
+            <PropertyRef Name="IdViaje" />
+          </Key>
+          <Property Name="IdViaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaLlegada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AerolineaVuelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Viaje_DatosGenerales" FromRole="Viaje" ToRole="DatosGenerales" />
+        </EntityType>
+        <Association Name="FK_Antecedentes_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Antecedentes" Type="Self.Antecedentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Antecedentes">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactos_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Contactos" Type="Self.Contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Contactos">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosClinicos_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="DatosClinicos" Type="Self.DatosClinicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DatosClinicos">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosGenerales_Notificante">
+          <End Role="DatosNotificante" Type="Self.DatosNotificante" Multiplicity="1" />
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosNotificante">
+              <PropertyRef Name="IdUnidadNotificante" />
+            </Principal>
+            <Dependent Role="DatosGenerales">
+              <PropertyRef Name="IdUnidadNotificante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatosUnidadMedica_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="DatosUnidadMedica" Type="Self.DatosUnidadMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DatosUnidadMedica">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evolucion_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Evolucion" Type="Self.Evolucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Evolucion">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfFormato_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="InformacionFormato" Type="Self.InformacionFormato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="InformacionFormato">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratorio_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Laboratorio">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tratamiento_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Tratamiento" Type="Self.Tratamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Tratamiento">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viaje_DatosGenerales">
+          <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
+          <End Role="Viaje" Type="Self.Viaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosGenerales">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Viaje">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstudioEpidemiologicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Antecedentes" EntityType="Self.Antecedentes" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" />
+          <EntitySet Name="DatosClinicos" EntityType="Self.DatosClinicos" />
+          <EntitySet Name="DatosGenerales" EntityType="Self.DatosGenerales" />
+          <EntitySet Name="DatosNotificante" EntityType="Self.DatosNotificante" />
+          <EntitySet Name="DatosUnidadMedica" EntityType="Self.DatosUnidadMedica" />
+          <EntitySet Name="Evolucion" EntityType="Self.Evolucion" />
+          <EntitySet Name="InformacionFormato" EntityType="Self.InformacionFormato" />
+          <EntitySet Name="Laboratorio" EntityType="Self.Laboratorio" />
+          <EntitySet Name="Tratamiento" EntityType="Self.Tratamiento" />
+          <EntitySet Name="Viaje" EntityType="Self.Viaje" />
+          <AssociationSet Name="FK_Antecedentes_DatosGenerales" Association="Self.FK_Antecedentes_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Antecedentes" EntitySet="Antecedentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactos_DatosGenerales" Association="Self.FK_Contactos_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Contactos" EntitySet="Contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosClinicos_DatosGenerales" Association="Self.FK_DatosClinicos_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="DatosClinicos" EntitySet="DatosClinicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosGenerales_Notificante" Association="Self.FK_DatosGenerales_Notificante">
+            <End Role="DatosNotificante" EntitySet="DatosNotificante" />
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatosUnidadMedica_DatosGenerales" Association="Self.FK_DatosUnidadMedica_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="DatosUnidadMedica" EntitySet="DatosUnidadMedica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evolucion_DatosGenerales" Association="Self.FK_Evolucion_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Evolucion" EntitySet="Evolucion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfFormato_DatosGenerales" Association="Self.FK_InfFormato_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="InformacionFormato" EntitySet="InformacionFormato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratorio_DatosGenerales" Association="Self.FK_Laboratorio_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Laboratorio" EntitySet="Laboratorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tratamiento_DatosGenerales" Association="Self.FK_Tratamiento_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Tratamiento" EntitySet="Tratamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viaje_DatosGenerales" Association="Self.FK_Viaje_DatosGenerales">
+            <End Role="DatosGenerales" EntitySet="DatosGenerales" />
+            <End Role="Viaje" EntitySet="Viaje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EstudioEpidemiologicoModelStoreContainer" CdmEntityContainer="EstudioEpidemiologicoEntities">
+          <EntitySetMapping Name="Antecedentes">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Antecedentes">
+              <MappingFragment StoreEntitySet="Antecedentes">
+                <ScalarProperty Name="LugarMercadoVentaAnimales" ColumnName="LugarMercadoVentaAnimales" />
+                <ScalarProperty Name="IdAntecedentes" ColumnName="IdAntecedentes" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="ViajoChina14dPrevInicioSintomas" ColumnName="ViajoChina14dPrevInicioSintomas" />
+                <ScalarProperty Name="ResidenteChina" ColumnName="ResidenteChina" />
+                <ScalarProperty Name="FechaViajeChina" ColumnName="FechaViajeChina" />
+                <ScalarProperty Name="AerolineaVueloLlegadaMexico" ColumnName="AerolineaVueloLlegadaMexico" />
+                <ScalarProperty Name="FechaLlegadaMexico" ColumnName="FechaLlegadaMexico" />
+                <ScalarProperty Name="ContactoPersonaSintomasRespiratorios" ColumnName="ContactoPersonaSintomasRespiratorios" />
+                <ScalarProperty Name="LugarContactoPersonas" ColumnName="LugarContactoPersonas" />
+                <ScalarProperty Name="ContactoAnimales" ColumnName="ContactoAnimales" />
+                <ScalarProperty Name="CualAnimal" ColumnName="CualAnimal" />
+                <ScalarProperty Name="TipoContactoAnimal" ColumnName="TipoContactoAnimal" />
+                <ScalarProperty Name="VisitoMercadoVentaAnimales" ColumnName="VisitoMercadoVentaAnimales" />
+                <ScalarProperty Name="FechaVisitaMercado" ColumnName="FechaVisitaMercado" />
+                <ScalarProperty Name="Ult14dContacCercanoPersSospCoV" ColumnName="Ult14dContacCercanoPersSospCoV" />
+                <ScalarProperty Name="Ult14dContacCercanoPersCorfiLabCoV" ColumnName="Ult14dContacCercanoPersCorfiLabCoV" />
+                <ScalarProperty Name="ContacPersViajChina14dPrevIniSintomas" ColumnName="ContacPersViajChina14dPrevIniSintomas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactos">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Contactos">
+              <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="TipoContactoIDoED" ColumnName="TipoContactoIDoED" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="SignosSintomas" ColumnName="SignosSintomas" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatosClinicos">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.DatosClinicos">
+              <MappingFragment StoreEntitySet="DatosClinicos">
+                <ScalarProperty Name="IdDatosClinicos" ColumnName="IdDatosClinicos" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="FechaInicioSintomas" ColumnName="FechaInicioSintomas" />
+                <ScalarProperty Name="Fiebre" ColumnName="Fiebre" />
+                <ScalarProperty Name="Tos" ColumnName="Tos" />
+                <ScalarProperty Name="DolorToracico" ColumnName="DolorToracico" />
+                <ScalarProperty Name="DificultadRespiratoria" ColumnName="DificultadRespiratoria" />
+                <ScalarProperty Name="Cefalea" ColumnName="Cefalea" />
+                <ScalarProperty Name="Irritabilidad" ColumnName="Irritabilidad" />
+                <ScalarProperty Name="Diarrea" ColumnName="Diarrea" />
+                <ScalarProperty Name="Vomito" ColumnName="Vomito" />
+                <ScalarProperty Name="Calosfrios" ColumnName="Calosfrios" />
+                <ScalarProperty Name="DolorAbdominal" ColumnName="DolorAbdominal" />
+                <ScalarProperty Name="Mialgias" ColumnName="Mialgias" />
+                <ScalarProperty Name="Artralgias" ColumnName="Artralgias" />
+                <ScalarProperty Name="AtaqueAlEdoGral" ColumnName="AtaqueAlEdoGral" />
+                <ScalarProperty Name="Rinorrea" ColumnName="Rinorrea" />
+                <ScalarProperty Name="Polipnea" ColumnName="Polipnea" />
+                <ScalarProperty Name="Odinofagia" ColumnName="Odinofagia" />
+                <ScalarProperty Name="Conjuntivitis" ColumnName="Conjuntivitis" />
+                <ScalarProperty Name="Cianosis" ColumnName="Cianosis" />
+                <ScalarProperty Name="Convulsiones" ColumnName="Convulsiones" />
+                <ScalarProperty Name="OtroSintoma" ColumnName="OtroSintoma" />
+                <ScalarProperty Name="Diabetes" ColumnName="Diabetes" />
+                <ScalarProperty Name="EPOC" ColumnName="EPOC" />
+                <ScalarProperty Name="Asma" ColumnName="Asma" />
+                <ScalarProperty Name="Inmunosupresion" ColumnName="Inmunosupresion" />
+                <ScalarProperty Name="Hipertension" ColumnName="Hipertension" />
+                <ScalarProperty Name="VihSida" ColumnName="VihSida" />
+                <ScalarProperty Name="EnfermedadCardio" ColumnName="EnfermedadCardio" />
+                <ScalarProperty Name="Obesidad" ColumnName="Obesidad" />
+                <ScalarProperty Name="InsuficienciaRenalCronica" ColumnName="InsuficienciaRenalCronica" />
+                <ScalarProperty Name="InsuficienciaHepaticaCronica" ColumnName="InsuficienciaHepaticaCronica" />
+                <ScalarProperty Name="Tabaquismo" ColumnName="Tabaquismo" />
+                <ScalarProperty Name="OtroCoMorbilidad" ColumnName="OtroCoMorbilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatosGenerales">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.DatosGenerales">
+              <MappingFragment StoreEntitySet="DatosGenerales">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="FechaIngresoUnidad" ColumnName="FechaIngresoUnidad" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="NacimientoDía" ColumnName="NacimientoDía" />
+                <ScalarProperty Name="NacimientoMes" ColumnName="NacimientoMes" />
+                <ScalarProperty Name="NacimientoAnio" ColumnName="NacimientoAnio" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Embarazada" ColumnName="Embarazada" />
+                <ScalarProperty Name="MesesEmbarazo" ColumnName="MesesEmbarazo" />
+                <ScalarProperty Name="EnPeriodoPuerperio" ColumnName="EnPeriodoPuerperio" />
+                <ScalarProperty Name="DiasPuerperio" ColumnName="DiasPuerperio" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="PaisOrigen" ColumnName="PaisOrigen" />
+                <ScalarProperty Name="NoExpedienteSeguridadSocial" ColumnName="NoExpedienteSeguridadSocial" />
+                <ScalarProperty Name="EntidadNacimiento" ColumnName="EntidadNacimiento" />
+                <ScalarProperty Name="EntidadDelegacionResidencia" ColumnName="EntidadDelegacionResidencia" />
+                <ScalarProperty Name="MunicipioResidencia" ColumnName="MunicipioResidencia" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="NoExterno" ColumnName="NoExterno" />
+                <ScalarProperty Name="NoInterno" ColumnName="NoInterno" />
+                <ScalarProperty Name="EntreCalles" ColumnName="EntreCalles" />
+                <ScalarProperty Name="YCalle" ColumnName="YCalle" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="SeReconoceIndigena" ColumnName="SeReconoceIndigena" />
+                <ScalarProperty Name="HablaAlgunaLenguaIndigena" ColumnName="HablaAlgunaLenguaIndigena" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="EsMigrante" ColumnName="EsMigrante" />
+                <ScalarProperty Name="PagoRealizado" ColumnName="PagoRealizado" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="FechaImpresion" ColumnName="FechaImpresion" />
+                <ScalarProperty Name="FechaPrueba" ColumnName="FechaPrueba" />
+                <ScalarProperty Name="IdUnidadNotificante" ColumnName="IdUnidadNotificante" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatosNotificante">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.DatosNotificante">
+              <MappingFragment StoreEntitySet="DatosNotificante">
+                <ScalarProperty Name="IdUnidadNotificante" ColumnName="IdUnidadNotificante" />
+                <ScalarProperty Name="Entidad" ColumnName="Entidad" />
+                <ScalarProperty Name="Jurisdiccion" ColumnName="Jurisdiccion" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="NombreUnidadMedica" ColumnName="NombreUnidadMedica" />
+                <ScalarProperty Name="Institucion" ColumnName="Institucion" />
+                <ScalarProperty Name="CLUES" ColumnName="CLUES" />
+                <ScalarProperty Name="NombreQuienElaboro" ColumnName="NombreQuienElaboro" />
+                <ScalarProperty Name="CargoQuienElaboro" ColumnName="CargoQuienElaboro" />
+                <ScalarProperty Name="NombreQuienAutorizo" ColumnName="NombreQuienAutorizo" />
+                <ScalarProperty Name="CargoQuienAutorizo" ColumnName="CargoQuienAutorizo" />
+                <ScalarProperty Name="ContactoTelefono" ColumnName="ContactoTelefono" />
+                <ScalarProperty Name="ContactoCorreoElectronico" ColumnName="ContactoCorreoElectronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatosUnidadMedica">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.DatosUnidadMedica">
+              <MappingFragment StoreEntitySet="DatosUnidadMedica">
+                <ScalarProperty Name="IdDatosUnidadMedica" ColumnName="IdDatosUnidadMedica" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="ServicioIngreso" ColumnName="ServicioIngreso" />
+                <ScalarProperty Name="TipPaciente" ColumnName="TipPaciente" />
+                <ScalarProperty Name="FechaIngresoUnidad" ColumnName="FechaIngresoUnidad" />
+                <ScalarProperty Name="CasoIngresadoUCI" ColumnName="CasoIngresadoUCI" />
+                <ScalarProperty Name="CasoIntubado" ColumnName="CasoIntubado" />
+                <ScalarProperty Name="CasoDiagnostNeumoniaClinica" ColumnName="CasoDiagnostNeumoniaClinica" />
+                <ScalarProperty Name="CasoDiagnostNeumoniaRadiológica" ColumnName="CasoDiagnostNeumoniaRadiológica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evolucion">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Evolucion">
+              <MappingFragment StoreEntitySet="Evolucion">
+                <ScalarProperty Name="IdEvolucion" ColumnName="IdEvolucion" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Evolucion1" ColumnName="Evolucion" />
+                <ScalarProperty Name="FechaEgreso" ColumnName="FechaEgreso" />
+                <ScalarProperty Name="FechaDefunción" ColumnName="FechaDefunción" />
+                <ScalarProperty Name="FolioCertificadoDefunción" ColumnName="FolioCertificadoDefunción" />
+                <ScalarProperty Name="Defuncion2019nCoV" ColumnName="Defuncion2019nCoV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformacionFormato">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.InformacionFormato">
+              <MappingFragment StoreEntitySet="InformacionFormato">
+                <ScalarProperty Name="IdInfFormato" ColumnName="IdInfFormato" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="NombreQuienElaboro" ColumnName="NombreQuienElaboro" />
+                <ScalarProperty Name="CargoQuienElaboro" ColumnName="CargoQuienElaboro" />
+                <ScalarProperty Name="NombreQuienAutorizo" ColumnName="NombreQuienAutorizo" />
+                <ScalarProperty Name="CargoQuienAutorizo" ColumnName="CargoQuienAutorizo" />
+                <ScalarProperty Name="FechaElaboracion" ColumnName="FechaElaboracion" />
+                <ScalarProperty Name="ContactoTelefono" ColumnName="ContactoTelefono" />
+                <ScalarProperty Name="ContactoCorreoElectronico" ColumnName="ContactoCorreoElectronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laboratorio">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Laboratorio">
+              <MappingFragment StoreEntitySet="Laboratorio">
+                <ScalarProperty Name="IdLaboratorio" ColumnName="IdLaboratorio" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="SeTomoMuestraPaciente" ColumnName="SeTomoMuestraPaciente" />
+                <ScalarProperty Name="LaboratorioDiagnostico" ColumnName="LaboratorioDiagnostico" />
+                <ScalarProperty Name="ExudadoFaringeo" ColumnName="ExudadoFaringeo" />
+                <ScalarProperty Name="ExudadoNasofaringeo" ColumnName="ExudadoNasofaringeo" />
+                <ScalarProperty Name="LavadoBronquial" ColumnName="LavadoBronquial" />
+                <ScalarProperty Name="BiopsiaPulmon" ColumnName="BiopsiaPulmon" />
+                <ScalarProperty Name="FechaTomaMuestra" ColumnName="FechaTomaMuestra" />
+                <ScalarProperty Name="FechaEnvioMuestra" ColumnName="FechaEnvioMuestra" />
+                <ScalarProperty Name="FechaRecepcionMuestra" ColumnName="FechaRecepcionMuestra" />
+                <ScalarProperty Name="FechaResultado" ColumnName="FechaResultado" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tratamiento">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Tratamiento">
+              <MappingFragment StoreEntitySet="Tratamiento">
+                <ScalarProperty Name="IdTratamiento" ColumnName="IdTratamiento" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="RecibioTrataAntipireticoAnalgesico" ColumnName="RecibioTrataAntipireticoAnalgesico" />
+                <ScalarProperty Name="FechaInicioTrataAntipireticoAnalgesico" ColumnName="FechaInicioTrataAntipireticoAnalgesico" />
+                <ScalarProperty Name="Paracetamol" ColumnName="Paracetamol" />
+                <ScalarProperty Name="Ibuprofeno" ColumnName="Ibuprofeno" />
+                <ScalarProperty Name="AcidoAcetilsalicilico" ColumnName="AcidoAcetilsalicilico" />
+                <ScalarProperty Name="ClonixinatoLisina" ColumnName="ClonixinatoLisina" />
+                <ScalarProperty Name="Naproxeno" ColumnName="Naproxeno" />
+                <ScalarProperty Name="Proxicam" ColumnName="Proxicam" />
+                <ScalarProperty Name="MetamizolSodico" ColumnName="MetamizolSodico" />
+                <ScalarProperty Name="Diclofenaco" ColumnName="Diclofenaco" />
+                <ScalarProperty Name="Ketorolaco" ColumnName="Ketorolaco" />
+                <ScalarProperty Name="OtroAntipireticoAnalgesico" ColumnName="OtroAntipireticoAnalgesico" />
+                <ScalarProperty Name="RecibioTrataAntiviral" ColumnName="RecibioTrataAntiviral" />
+                <ScalarProperty Name="FechaInicioTrataAntiviral" ColumnName="FechaInicioTrataAntiviral" />
+                <ScalarProperty Name="Amantadina" ColumnName="Amantadina" />
+                <ScalarProperty Name="Rimantadina" ColumnName="Rimantadina" />
+                <ScalarProperty Name="Oseltamivir" ColumnName="Oseltamivir" />
+                <ScalarProperty Name="Zanamivir" ColumnName="Zanamivir" />
+                <ScalarProperty Name="Peramivir" ColumnName="Peramivir" />
+                <ScalarProperty Name="Ribavirina" ColumnName="Ribavirina" />
+                <ScalarProperty Name="OtroAntiviral" ColumnName="OtroAntiviral" />
+                <ScalarProperty Name="RecibioTrataAntibiotico" ColumnName="RecibioTrataAntibiotico" />
+                <ScalarProperty Name="FechaInicioTrataAntibiotico" ColumnName="FechaInicioTrataAntibiotico" />
+                <ScalarProperty Name="Penicilina" ColumnName="Penicilina" />
+                <ScalarProperty Name="Dicloxacilina" ColumnName="Dicloxacilina" />
+                <ScalarProperty Name="Ampicilina" ColumnName="Ampicilina" />
+                <ScalarProperty Name="Amikacina" ColumnName="Amikacina" />
+                <ScalarProperty Name="Doxiciclina" ColumnName="Doxiciclina" />
+                <ScalarProperty Name="Cefalosporina" ColumnName="Cefalosporina" />
+                <ScalarProperty Name="Clindamicina" ColumnName="Clindamicina" />
+                <ScalarProperty Name="Claritromicina" ColumnName="Claritromicina" />
+                <ScalarProperty Name="Ciprofloxacino" ColumnName="Ciprofloxacino" />
+                <ScalarProperty Name="Meropenem" ColumnName="Meropenem" />
+                <ScalarProperty Name="Vancomicina" ColumnName="Vancomicina" />
+                <ScalarProperty Name="AmoxicilinaAcClauvulanico" ColumnName="AmoxicilinaAcClauvulanico" />
+                <ScalarProperty Name="OtrosAntibioticos" ColumnName="OtrosAntibioticos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Viaje">
+            <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Viaje">
+              <MappingFragment StoreEntitySet="Viaje">
+                <ScalarProperty Name="IdViaje" ColumnName="IdViaje" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="FechaLlegada" ColumnName="FechaLlegada" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="AerolineaVuelo" ColumnName="AerolineaVuelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
