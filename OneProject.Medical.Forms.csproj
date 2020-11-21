@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -40,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -53,6 +57,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmBusqueda.cs">
@@ -60,6 +65,12 @@
     </Compile>
     <Compile Include="frmBusqueda.Designer.cs">
       <DependentUpon>frmBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleEstudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleEstudio.Designer.cs">
+      <DependentUpon>frmDetalleEstudio.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Antecedentes.cs">
       <DependentUpon>EstudioEpidemiologicoModels.tt</DependentUpon>
@@ -115,6 +126,9 @@
     <EmbeddedResource Include="frmBusqueda.resx">
       <DependentUpon>frmBusqueda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleEstudio.resx">
+      <DependentUpon>frmDetalleEstudio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -146,19 +160,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formatos\Salidas\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\EstudioEpidemiologicoModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EstudioEpidemiologicoModels.Context.cs</LastGenOutput>
       <DependentUpon>EstudioEpidemiologicoModels.edmx</DependentUpon>
+      <LastGenOutput>EstudioEpidemiologicoModels.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\EstudioEpidemiologicoModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EstudioEpidemiologicoModels.edmx</DependentUpon>
       <LastGenOutput>EstudioEpidemiologicoModels.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

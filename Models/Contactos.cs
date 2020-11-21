@@ -18,7 +18,7 @@ namespace OneProject.Medical.Forms.Models
         public int IdPersona { get; set; }
         public string NombreCompleto { get; set; }
         public string Sexo { get; set; }
-        public short Edad { get; set; }
+        public Nullable<short> Edad { get; set; }
         public string TipoContactoIDoED { get; set; }
         public string CorreoElectronico { get; set; }
         public string SignosSintomas { get; set; }

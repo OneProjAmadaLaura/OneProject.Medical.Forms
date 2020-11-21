@@ -63,7 +63,7 @@ namespace OneProject.Medical.Forms.Models
         public bool HablaAlgunaLenguaIndigena { get; set; }
         public string Ocupacion { get; set; }
         public bool EsMigrante { get; set; }
-        public Nullable<bool> PagoRealizado { get; set; }
+        public string FolioPago { get; set; }
         public Nullable<System.DateTime> FechaPago { get; set; }
         public Nullable<System.DateTime> FechaImpresion { get; set; }
         public Nullable<System.DateTime> FechaPrueba { get; set; }

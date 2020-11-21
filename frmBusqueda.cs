@@ -12,13 +12,31 @@ using OneProject.Medical.Forms.Models;
 
 using System.Data.Objects.SqlClient;
 
-    namespace OneProject.Medical.Forms
+namespace OneProject.Medical.Forms
 {
     public partial class frmBusqueda : Form
     {
         public frmBusqueda()
         {
             InitializeComponent();
+
+            this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
+            this.dgvEstudios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellDoubleClick);
+
+
+            //this.dgvEstudios.CellValueChanged += dgvEstudios_CellValueChanged;
+
+
+            //dgvEstudios.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Index" });
+            //bNavDatos.BindingSource = bSourceDatos;
+
+
+            //bSourceDatos.CurrentChanged += new System.EventHandler();
+            //bSourceDatos.DataSource=new pageoff
+
+            //bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChanged);
+            //bindingSource1.DataSource = new PageOffsetList();
+
         }
 
         private void frmBusqueda_Load(object sender, EventArgs e)
@@ -38,6 +56,9 @@ using System.Data.Objects.SqlClient;
             cboEstatus.DisplayMember = "Estatus";
             cboEstatus.ValueMember = "IdEstatus";
             cboEstatus.DataSource = listEstatus.ToList();
+
+            cboEstatus.SelectedIndex = 1;
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -48,16 +69,6 @@ using System.Data.Objects.SqlClient;
 
         private void Buscar()
         {
-            //  fecha = SqlFunctions.DateName("day", ma.fecha) + "/" + SqlFunctions.DateName("month", ma.fecha) + "/" + SqlFunctions.DateName("year", ma.fecha)
-
-            /*
-             *                                FechaRegistro = DateTime.Parse(d.FechaRegistro.ToString()).ToString("dd/MM/yyyy"),
-                               FechaPago = DateTime.Parse(d.FechaPago.ToString()).ToString("dd/MM/yyyy"),
-                               FechaImpresion = DateTime.Parse(d.FechaImpresion.ToString()).ToString("dd/MM/yyyy"),
-                               FechaAplicacionPrueba = DateTime.Parse(d.FechaPrueba.ToString()).ToString("dd/MM/yyyy"),
-
-             * 
-             * */
 
             int iEstatus = 0;
             using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
@@ -69,8 +80,8 @@ using System.Data.Objects.SqlClient;
                                ApellidoPaterno = d.PrimerApellido,
                                ApellidoMaterno = d.SegundoApellido,
                                d.Nombres,
-                               d.PagoRealizado,
                                FechaRegistro = d.FechaRegistro,
+                               d.FolioPago,
                                FechaPago = d.FechaPago,
                                FechaImpresion = d.FechaImpresion,
                                FechaAplicacionPrueba = d.FechaPrueba,
@@ -99,11 +110,11 @@ using System.Data.Objects.SqlClient;
                     {
                         case 1:
                             // Captura
-                            lst = lst.Where(d => d.PagoRealizado == false);
+                            lst = lst.Where(d => d.FechaPago == null);
                             break;
                         case 2:
                             // Pagado
-                            lst = lst.Where(d => d.PagoRealizado == true);
+                            lst = lst.Where(d => d.FechaPago != null && d.FechaImpresion == null);
                             break;
                         case 3:
                             // Impreso
@@ -138,6 +149,42 @@ using System.Data.Objects.SqlClient;
         private void chkFechaReg_CheckedChanged(object sender, EventArgs e)
         {
             dtpFechaReg.Enabled = chkFechaReg.Checked;
+        }
+
+        private void dgvEstudios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private int? GetId()
+        {
+            try
+            {
+                return int.Parse(dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[0].Value.ToString());
+            }
+            catch { return null; }
+
+        }
+
+        private void dgvEstudios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int? idDetalle = GetId();
+
+            if (idDetalle != null)
+            {
+                 DatosGenerales dat = new DatosGenerales();
+                dat.IdPersona =int.Parse(dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[0].Value.ToString());
+                dat.PrimerApellido = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[1].Value.ToString();
+                dat.SegundoApellido = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[2].Value.ToString();
+                dat.Nombres = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[3].Value.ToString();
+
+                frmDetalleEstudio detalle = new frmDetalleEstudio(dat);
+                detalle.ShowDialog();
+
+            }
+
+            Buscar();
+
         }
     }
 }

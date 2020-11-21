@@ -16,7 +16,7 @@ namespace OneProject.Medical.Forms.Models
     {
         public int IdEvolucion { get; set; }
         public int IdPersona { get; set; }
-        public short Evolucion1 { get; set; }
+        public Nullable<short> Evolucion1 { get; set; }
         public Nullable<System.DateTime> FechaEgreso { get; set; }
         public Nullable<System.DateTime> FechaDefunción { get; set; }
         public string FolioCertificadoDefunción { get; set; }

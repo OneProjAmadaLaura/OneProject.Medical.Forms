@@ -18,8 +18,8 @@ namespace OneProject.Medical.Forms.Models
         public int IdPersona { get; set; }
         public string Pais { get; set; }
         public string Ciudad { get; set; }
-        public System.DateTime FechaLlegada { get; set; }
-        public System.DateTime FechaSalida { get; set; }
+        public Nullable<System.DateTime> FechaLlegada { get; set; }
+        public Nullable<System.DateTime> FechaSalida { get; set; }
         public string AerolineaVuelo { get; set; }
     
         public virtual DatosGenerales DatosGenerales { get; set; }

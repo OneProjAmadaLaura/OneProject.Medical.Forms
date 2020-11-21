@@ -18,11 +18,11 @@ namespace OneProject.Medical.Forms.Models
         public int IdPersona { get; set; }
         public string ServicioIngreso { get; set; }
         public string TipPaciente { get; set; }
-        public System.DateTime FechaIngresoUnidad { get; set; }
-        public bool CasoIngresadoUCI { get; set; }
-        public bool CasoIntubado { get; set; }
-        public bool CasoDiagnostNeumoniaClinica { get; set; }
-        public bool CasoDiagnostNeumoniaRadiológica { get; set; }
+        public Nullable<System.DateTime> FechaIngresoUnidad { get; set; }
+        public Nullable<bool> CasoIngresadoUCI { get; set; }
+        public Nullable<bool> CasoIntubado { get; set; }
+        public Nullable<bool> CasoDiagnostNeumoniaClinica { get; set; }
+        public Nullable<bool> CasoDiagnostNeumoniaRadiológica { get; set; }
     
         public virtual DatosGenerales DatosGenerales { get; set; }
     }

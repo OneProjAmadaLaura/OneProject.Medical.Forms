@@ -29,7 +29,11 @@ namespace OneProject.Medical.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainerPrincipal = new System.Windows.Forms.SplitContainer();
+            this.chkFechaReg = new System.Windows.Forms.CheckBox();
+            this.lblMaterno = new System.Windows.Forms.Label();
+            this.txtMaterno = new System.Windows.Forms.TextBox();
             this.lblPaterno = new System.Windows.Forms.Label();
             this.txtPaterno = new System.Windows.Forms.TextBox();
             this.cboEstatus = new System.Windows.Forms.ComboBox();
@@ -39,14 +43,13 @@ namespace OneProject.Medical.Forms
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvEstudios = new System.Windows.Forms.DataGridView();
-            this.lblMaterno = new System.Windows.Forms.Label();
-            this.txtMaterno = new System.Windows.Forms.TextBox();
-            this.chkFechaReg = new System.Windows.Forms.CheckBox();
+            this.bSourceDatos = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrincipal)).BeginInit();
             this.splitContainerPrincipal.Panel1.SuspendLayout();
             this.splitContainerPrincipal.Panel2.SuspendLayout();
             this.splitContainerPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bSourceDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerPrincipal
@@ -74,9 +77,36 @@ namespace OneProject.Medical.Forms
             // splitContainerPrincipal.Panel2
             // 
             this.splitContainerPrincipal.Panel2.Controls.Add(this.dgvEstudios);
-            this.splitContainerPrincipal.Size = new System.Drawing.Size(800, 450);
+            this.splitContainerPrincipal.Size = new System.Drawing.Size(905, 510);
             this.splitContainerPrincipal.SplitterDistance = 85;
             this.splitContainerPrincipal.TabIndex = 0;
+            // 
+            // chkFechaReg
+            // 
+            this.chkFechaReg.AutoSize = true;
+            this.chkFechaReg.Location = new System.Drawing.Point(12, 11);
+            this.chkFechaReg.Name = "chkFechaReg";
+            this.chkFechaReg.Size = new System.Drawing.Size(96, 17);
+            this.chkFechaReg.TabIndex = 12;
+            this.chkFechaReg.Text = "Fecha registro:";
+            this.chkFechaReg.UseVisualStyleBackColor = true;
+            this.chkFechaReg.CheckedChanged += new System.EventHandler(this.chkFechaReg_CheckedChanged);
+            // 
+            // lblMaterno
+            // 
+            this.lblMaterno.AutoSize = true;
+            this.lblMaterno.Location = new System.Drawing.Point(217, 67);
+            this.lblMaterno.Name = "lblMaterno";
+            this.lblMaterno.Size = new System.Drawing.Size(88, 13);
+            this.lblMaterno.TabIndex = 11;
+            this.lblMaterno.Text = "Apellido materno:";
+            // 
+            // txtMaterno
+            // 
+            this.txtMaterno.Location = new System.Drawing.Point(305, 61);
+            this.txtMaterno.Name = "txtMaterno";
+            this.txtMaterno.Size = new System.Drawing.Size(216, 20);
+            this.txtMaterno.TabIndex = 10;
             // 
             // lblPaterno
             // 
@@ -152,41 +182,15 @@ namespace OneProject.Medical.Forms
             this.dgvEstudios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEstudios.Location = new System.Drawing.Point(0, 0);
             this.dgvEstudios.Name = "dgvEstudios";
-            this.dgvEstudios.Size = new System.Drawing.Size(800, 361);
+            this.dgvEstudios.Size = new System.Drawing.Size(905, 421);
             this.dgvEstudios.TabIndex = 0;
-            // 
-            // lblMaterno
-            // 
-            this.lblMaterno.AutoSize = true;
-            this.lblMaterno.Location = new System.Drawing.Point(217, 67);
-            this.lblMaterno.Name = "lblMaterno";
-            this.lblMaterno.Size = new System.Drawing.Size(88, 13);
-            this.lblMaterno.TabIndex = 11;
-            this.lblMaterno.Text = "Apellido materno:";
-            // 
-            // txtMaterno
-            // 
-            this.txtMaterno.Location = new System.Drawing.Point(305, 61);
-            this.txtMaterno.Name = "txtMaterno";
-            this.txtMaterno.Size = new System.Drawing.Size(216, 20);
-            this.txtMaterno.TabIndex = 10;
-            // 
-            // chkFechaReg
-            // 
-            this.chkFechaReg.AutoSize = true;
-            this.chkFechaReg.Location = new System.Drawing.Point(12, 11);
-            this.chkFechaReg.Name = "chkFechaReg";
-            this.chkFechaReg.Size = new System.Drawing.Size(96, 17);
-            this.chkFechaReg.TabIndex = 12;
-            this.chkFechaReg.Text = "Fecha registro:";
-            this.chkFechaReg.UseVisualStyleBackColor = true;
-            this.chkFechaReg.CheckedChanged += new System.EventHandler(this.chkFechaReg_CheckedChanged);
+            this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             // 
             // frmBusqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(905, 510);
             this.Controls.Add(this.splitContainerPrincipal);
             this.Name = "frmBusqueda";
             this.Text = "Búsqueda";
@@ -197,6 +201,7 @@ namespace OneProject.Medical.Forms
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrincipal)).EndInit();
             this.splitContainerPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bSourceDatos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,6 +221,7 @@ namespace OneProject.Medical.Forms
         private System.Windows.Forms.Label lblMaterno;
         private System.Windows.Forms.TextBox txtMaterno;
         private System.Windows.Forms.CheckBox chkFechaReg;
+        private System.Windows.Forms.BindingSource bSourceDatos;
     }
 }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EstudioEpidemiologicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EstudioEpidemiologicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Antecedentes">
           <Key>
             <PropertyRef Name="IdAntecedentes" />
@@ -34,13 +34,13 @@
           </Key>
           <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Edad" Type="smallint" Nullable="false" />
-          <Property Name="TipoContactoIDoED" Type="char" MaxLength="2" Nullable="false" />
-          <Property Name="CorreoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SignosSintomas" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Observaciones" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Edad" Type="smallint" />
+          <Property Name="TipoContactoIDoED" Type="char" MaxLength="2" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="50" />
+          <Property Name="SignosSintomas" Type="varchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DatosClinicos">
           <Key>
@@ -121,7 +121,7 @@
           <Property Name="HablaAlgunaLenguaIndigena" Type="bit" Nullable="false" />
           <Property Name="Ocupacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EsMigrante" Type="bit" Nullable="false" />
-          <Property Name="PagoRealizado" Type="bit" />
+          <Property Name="FolioPago" Type="varchar" MaxLength="20" />
           <Property Name="FechaPago" Type="datetime" />
           <Property Name="FechaImpresion" Type="datetime" />
           <Property Name="FechaPrueba" Type="datetime" />
@@ -152,13 +152,13 @@
           </Key>
           <Property Name="IdDatosUnidadMedica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="ServicioIngreso" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TipPaciente" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="FechaIngresoUnidad" Type="datetime" Nullable="false" />
-          <Property Name="CasoIngresadoUCI" Type="bit" Nullable="false" />
-          <Property Name="CasoIntubado" Type="bit" Nullable="false" />
-          <Property Name="CasoDiagnostNeumoniaClinica" Type="bit" Nullable="false" />
-          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="bit" Nullable="false" />
+          <Property Name="ServicioIngreso" Type="varchar" MaxLength="50" />
+          <Property Name="TipPaciente" Type="char" MaxLength="1" />
+          <Property Name="FechaIngresoUnidad" Type="datetime" />
+          <Property Name="CasoIngresadoUCI" Type="bit" />
+          <Property Name="CasoIntubado" Type="bit" />
+          <Property Name="CasoDiagnostNeumoniaClinica" Type="bit" />
+          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="bit" />
         </EntityType>
         <EntityType Name="Evolucion">
           <Key>
@@ -166,7 +166,7 @@
           </Key>
           <Property Name="IdEvolucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="Evolucion" Type="smallint" Nullable="false" />
+          <Property Name="Evolucion" Type="smallint" />
           <Property Name="FechaEgreso" Type="datetime" />
           <Property Name="FechaDefunción" Type="datetime" />
           <Property Name="FolioCertificadoDefunción" Type="varchar" MaxLength="50" />
@@ -253,11 +253,11 @@
           </Key>
           <Property Name="IdViaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="Pais" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Ciudad" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FechaLlegada" Type="datetime" Nullable="false" />
-          <Property Name="FechaSalida" Type="datetime" Nullable="false" />
-          <Property Name="AerolineaVuelo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="FechaLlegada" Type="datetime" />
+          <Property Name="FechaSalida" Type="datetime" />
+          <Property Name="AerolineaVuelo" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Antecedentes_DatosGenerales">
           <End Role="DatosGenerales" Type="Self.DatosGenerales" Multiplicity="1" />
@@ -432,7 +432,8 @@
             <End Role="Viaje" EntitySet="Viaje" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EstudioEpidemiologicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -453,12 +454,12 @@
           <Property Name="CualAnimal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoContactoAnimal" Type="Int16" />
           <Property Name="VisitoMercadoVentaAnimales" Type="Boolean" Nullable="false" />
+          <Property Name="LugarMercadoVentaAnimales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaVisitaMercado" Type="DateTime" Precision="3" />
           <Property Name="Ult14dContacCercanoPersSospCoV" Type="Boolean" Nullable="false" />
           <Property Name="Ult14dContacCercanoPersCorfiLabCoV" Type="Boolean" Nullable="false" />
           <Property Name="ContacPersViajChina14dPrevIniSintomas" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Antecedentes_DatosGenerales" FromRole="Antecedentes" ToRole="DatosGenerales" />
-          <Property Name="LugarMercadoVentaAnimales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Contactos">
           <Key>
@@ -466,13 +467,13 @@
           </Key>
           <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Edad" Type="Int16" Nullable="false" />
-          <Property Name="TipoContactoIDoED" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SignosSintomas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Edad" Type="Int16" />
+          <Property Name="TipoContactoIDoED" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignosSintomas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Contactos_DatosGenerales" FromRole="Contactos" ToRole="DatosGenerales" />
         </EntityType>
         <EntityType Name="DatosClinicos">
@@ -555,7 +556,7 @@
           <Property Name="HablaAlgunaLenguaIndigena" Type="Boolean" Nullable="false" />
           <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EsMigrante" Type="Boolean" Nullable="false" />
-          <Property Name="PagoRealizado" Type="Boolean" />
+          <Property Name="FolioPago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FechaPago" Type="DateTime" Precision="3" />
           <Property Name="FechaImpresion" Type="DateTime" Precision="3" />
           <Property Name="FechaPrueba" Type="DateTime" Precision="3" />
@@ -597,13 +598,13 @@
           </Key>
           <Property Name="IdDatosUnidadMedica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="ServicioIngreso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TipPaciente" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="FechaIngresoUnidad" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CasoIngresadoUCI" Type="Boolean" Nullable="false" />
-          <Property Name="CasoIntubado" Type="Boolean" Nullable="false" />
-          <Property Name="CasoDiagnostNeumoniaClinica" Type="Boolean" Nullable="false" />
-          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="Boolean" Nullable="false" />
+          <Property Name="ServicioIngreso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipPaciente" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechaIngresoUnidad" Type="DateTime" Precision="3" />
+          <Property Name="CasoIngresadoUCI" Type="Boolean" />
+          <Property Name="CasoIntubado" Type="Boolean" />
+          <Property Name="CasoDiagnostNeumoniaClinica" Type="Boolean" />
+          <Property Name="CasoDiagnostNeumoniaRadiológica" Type="Boolean" />
           <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_DatosUnidadMedica_DatosGenerales" FromRole="DatosUnidadMedica" ToRole="DatosGenerales" />
         </EntityType>
         <EntityType Name="Evolucion">
@@ -612,7 +613,7 @@
           </Key>
           <Property Name="IdEvolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Evolucion1" Type="Int16" Nullable="false" />
+          <Property Name="Evolucion1" Type="Int16" />
           <Property Name="FechaEgreso" Type="DateTime" Precision="3" />
           <Property Name="FechaDefunción" Type="DateTime" Precision="3" />
           <Property Name="FolioCertificadoDefunción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -703,11 +704,11 @@
           </Key>
           <Property Name="IdViaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaLlegada" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="AerolineaVuelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaLlegada" Type="DateTime" Precision="3" />
+          <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+          <Property Name="AerolineaVuelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DatosGenerales" Relationship="Self.FK_Viaje_DatosGenerales" FromRole="Viaje" ToRole="DatosGenerales" />
         </EntityType>
         <Association Name="FK_Antecedentes_DatosGenerales">
@@ -892,7 +893,6 @@
           <EntitySetMapping Name="Antecedentes">
             <EntityTypeMapping TypeName="EstudioEpidemiologicoModel.Antecedentes">
               <MappingFragment StoreEntitySet="Antecedentes">
-                <ScalarProperty Name="LugarMercadoVentaAnimales" ColumnName="LugarMercadoVentaAnimales" />
                 <ScalarProperty Name="IdAntecedentes" ColumnName="IdAntecedentes" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="ViajoChina14dPrevInicioSintomas" ColumnName="ViajoChina14dPrevInicioSintomas" />
@@ -906,6 +906,7 @@
                 <ScalarProperty Name="CualAnimal" ColumnName="CualAnimal" />
                 <ScalarProperty Name="TipoContactoAnimal" ColumnName="TipoContactoAnimal" />
                 <ScalarProperty Name="VisitoMercadoVentaAnimales" ColumnName="VisitoMercadoVentaAnimales" />
+                <ScalarProperty Name="LugarMercadoVentaAnimales" ColumnName="LugarMercadoVentaAnimales" />
                 <ScalarProperty Name="FechaVisitaMercado" ColumnName="FechaVisitaMercado" />
                 <ScalarProperty Name="Ult14dContacCercanoPersSospCoV" ColumnName="Ult14dContacCercanoPersSospCoV" />
                 <ScalarProperty Name="Ult14dContacCercanoPersCorfiLabCoV" ColumnName="Ult14dContacCercanoPersCorfiLabCoV" />
@@ -1007,7 +1008,7 @@
                 <ScalarProperty Name="HablaAlgunaLenguaIndigena" ColumnName="HablaAlgunaLenguaIndigena" />
                 <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
                 <ScalarProperty Name="EsMigrante" ColumnName="EsMigrante" />
-                <ScalarProperty Name="PagoRealizado" ColumnName="PagoRealizado" />
+                <ScalarProperty Name="FolioPago" ColumnName="FolioPago" />
                 <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="FechaImpresion" ColumnName="FechaImpresion" />
                 <ScalarProperty Name="FechaPrueba" ColumnName="FechaPrueba" />

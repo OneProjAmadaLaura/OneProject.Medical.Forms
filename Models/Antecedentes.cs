@@ -27,11 +27,11 @@ namespace OneProject.Medical.Forms.Models
         public string CualAnimal { get; set; }
         public Nullable<short> TipoContactoAnimal { get; set; }
         public bool VisitoMercadoVentaAnimales { get; set; }
+        public string LugarMercadoVentaAnimales { get; set; }
         public Nullable<System.DateTime> FechaVisitaMercado { get; set; }
         public bool Ult14dContacCercanoPersSospCoV { get; set; }
         public bool Ult14dContacCercanoPersCorfiLabCoV { get; set; }
         public bool ContacPersViajChina14dPrevIniSintomas { get; set; }
-        public string LugarMercadoVentaAnimales { get; set; }
     
         public virtual DatosGenerales DatosGenerales { get; set; }
     }
