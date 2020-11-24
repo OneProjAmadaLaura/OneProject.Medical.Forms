@@ -36,5 +36,6 @@ namespace OneProject.Medical.Forms.Models
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<Tratamiento> Tratamiento { get; set; }
         public virtual DbSet<Viaje> Viaje { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

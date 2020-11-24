@@ -16,7 +16,7 @@ namespace OneProject.Medical.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBusqueda());
+            Application.Run(new frmLogin());
         }
     }
 }

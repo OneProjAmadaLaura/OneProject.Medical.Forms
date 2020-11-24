@@ -27,60 +27,78 @@ namespace OneProject.Medical.Forms
         public frmDetalleEstudio(DatosGenerales dat)
         {
             InitializeComponent();
+
             this.datEnt = dat;
 
-            lblIdentificadorV.Text = string.Empty;
-            lblNombreV.Text = string.Empty;
-            lblPaternoV.Text = string.Empty;
-            lblMaternoV.Text = string.Empty;
+            try
+            {
+                lblIdentificadorV.Text = string.Empty;
+                lblNombreV.Text = string.Empty;
+                lblPaternoV.Text = string.Empty;
+                lblMaternoV.Text = string.Empty;
 
-            cargaDatos();
+                cargaDatos();
+            }
+            catch (Exception ex)
+            {
+                lblErrorGeneral.Text = ex.Message;
+
+            }
         }
 
         private void cargaDatos()
         {
-
-            using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+            try
             {
-                dat = tablas.DatosGenerales.Find(datEnt.IdPersona);
+                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                {
+                    dat = tablas.DatosGenerales.Find(datEnt.IdPersona);
+                }
+
+                lblIdentificadorV.Text = dat.IdPersona.ToString();
+                lblNombreV.Text = dat.Nombres;
+                lblPaternoV.Text = dat.PrimerApellido;
+                lblMaternoV.Text = dat.SegundoApellido;
+
+                if (dat.FechaPago is null)
+                {
+                    // Captura
+                    lblReqFolio.Visible = true;
+                    btnRegistrarPago.Enabled = true;
+
+                }
+                else if (dat.FechaPago != null && dat.FechaImpresion is null)
+                {
+                    // Pagado
+                    txtFolioPago.Enabled = false;
+                    txtFolioPago.Text = dat.FolioPago;
+
+                    btnImprimir.Enabled = true;
+
+                }
+                else if (dat.FechaImpresion != null && dat.FechaPrueba is null)
+                {
+                    // Impreso
+
+                    txtFolioPago.Enabled = false;
+                    txtFolioPago.Text = dat.FolioPago;
+
+                    btnImprimir.Enabled = true;
+                    btnRegistrarPrueba.Enabled = true;
+                }
+                else if (dat.FechaPrueba != null)
+                {
+                    // Prueba tomada
+
+                    txtFolioPago.Enabled = false;
+                    txtFolioPago.Text = dat.FolioPago;
+
+                }
             }
 
-            lblIdentificadorV.Text = dat.IdPersona.ToString();
-            lblNombreV.Text = dat.Nombres;
-            lblPaternoV.Text = dat.PrimerApellido;
-            lblMaternoV.Text = dat.SegundoApellido;
-
-            if (dat.FechaPago is null)
+            catch (Exception ex)
             {
-                // Captura
-                lblReqFolio.Visible = true;
-                btnRegistrarPago.Visible = true;
-
-            }
-            else if (dat.FechaPago != null && dat.FechaImpresion is null)
-            {
-                // Pagado
-                txtFolioPago.Enabled = false;
-                txtFolioPago.Text = dat.FolioPago;
-
-                btnImprimir.Visible = true;
-
-            }
-            else if (dat.FechaImpresion != null && dat.FechaPrueba is null)
-            {
-                // Impreso
-
-                txtFolioPago.Enabled = false;
-                txtFolioPago.Text = dat.FolioPago;
-
-                btnRegistrarPrueba.Visible = true;
-            }
-            else if (dat.FechaPrueba != null)
-            {
-                // Prueba tomada
-
-                txtFolioPago.Enabled = false;
-                txtFolioPago.Text = dat.FolioPago;
+                throw;
 
             }
 
@@ -88,67 +106,115 @@ namespace OneProject.Medical.Forms
 
         private void btnRegistrarPago_Click(object sender, EventArgs e)
         {
-            if (txtFolioPago.Text.Trim().Length > 0)
+            try
             {
-                lblErrorReq.Visible = false;
-                DatosGenerales oTabla = null;
-
-                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                if (txtFolioPago.Text.Trim().Length > 0)
                 {
-                    oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
 
-                    oTabla.FolioPago = txtFolioPago.Text;
-                    oTabla.FechaPago = DateTime.Now;
+                    DialogResult dr = MessageBox.Show("¿Está seguro que quiere registrar el pago?", "Consulta",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                    tablas.SaveChanges();
-                    this.Close();
+                    if (dr == DialogResult.Yes)
+                    {
+                        lblErrorReq.Visible = false;
+                        DatosGenerales oTabla = null;
+
+                        using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                        {
+                            oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
+
+                            oTabla.FolioPago = txtFolioPago.Text;
+                            oTabla.FechaPago = DateTime.Now;
+
+                            tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                            tablas.SaveChanges();
+                            this.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    lblErrorReq.Visible = true;
                 }
             }
-            else
+
+            catch (Exception ex)
             {
-                lblErrorReq.Visible = true;
+                lblErrorGeneral.Text = ex.Message;
+
             }
 
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            string archivo = "";
-            archivo = generarArchivo();
-
-            if (editarArchivo(archivo))
+            try
             {
-                // Falta pasarlo a PDF e imprimir
 
-                DatosGenerales oTabla = null;
+                DialogResult dr = MessageBox.Show("¿Está seguro que quiere imprimir el estudio?", "Consulta",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                if (dr == DialogResult.Yes)
                 {
-                    oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
+                    string archivo = "";
+                    archivo = generarArchivo();
 
-                    oTabla.FechaImpresion = DateTime.Now;
+                    if (editarArchivo(archivo))
+                    {
+                        // Falta pasarlo a PDF e imprimir
 
-                    tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                    tablas.SaveChanges();
-                    this.Close();
+                        DatosGenerales oTabla = null;
+
+                        using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                        {
+                            oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
+
+                            oTabla.FechaImpresion = DateTime.Now;
+
+                            tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                            tablas.SaveChanges();
+                            this.Close();
+                        }
+                    }
                 }
+            }
+
+            catch (Exception ex)
+            {
+                lblErrorGeneral.Text = ex.Message;
+
             }
         }
 
         private void btnRegistrarPrueba_Click(object sender, EventArgs e)
         {
-            DatosGenerales oTabla = null;
-
-            using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+            try
             {
-                oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
 
-                oTabla.FechaPrueba = DateTime.Now;
+                DialogResult dr = MessageBox.Show("¿Está seguro que quiere registrar la prueba?", "Consulta",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                tablas.SaveChanges();
-                this.Close();
+                if (dr == DialogResult.Yes)
+                {
+                    DatosGenerales oTabla = null;
+
+                    using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                    {
+                        oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
+
+                        oTabla.FechaPrueba = DateTime.Now;
+
+                        tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                        tablas.SaveChanges();
+                        this.Close();
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                lblErrorGeneral.Text = ex.Message;
+
             }
         }
 
@@ -213,7 +279,7 @@ namespace OneProject.Medical.Forms
             }
             catch (Exception ex)
             {
-                return false;
+                throw;
             }
 
         }
@@ -226,9 +292,10 @@ namespace OneProject.Medical.Forms
                 lblErrorReq.Visible = true;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

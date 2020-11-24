@@ -44,6 +44,7 @@ namespace OneProject.Medical.Forms
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvEstudios = new System.Windows.Forms.DataGridView();
             this.bSourceDatos = new System.Windows.Forms.BindingSource(this.components);
+            this.lblErrorGral = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrincipal)).BeginInit();
             this.splitContainerPrincipal.Panel1.SuspendLayout();
             this.splitContainerPrincipal.Panel2.SuspendLayout();
@@ -62,6 +63,7 @@ namespace OneProject.Medical.Forms
             // 
             // splitContainerPrincipal.Panel1
             // 
+            this.splitContainerPrincipal.Panel1.Controls.Add(this.lblErrorGral);
             this.splitContainerPrincipal.Panel1.Controls.Add(this.chkFechaReg);
             this.splitContainerPrincipal.Panel1.Controls.Add(this.lblMaterno);
             this.splitContainerPrincipal.Panel1.Controls.Add(this.txtMaterno);
@@ -186,6 +188,15 @@ namespace OneProject.Medical.Forms
             this.dgvEstudios.TabIndex = 0;
             this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             // 
+            // lblErrorGral
+            // 
+            this.lblErrorGral.AutoSize = true;
+            this.lblErrorGral.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorGral.Location = new System.Drawing.Point(549, 67);
+            this.lblErrorGral.Name = "lblErrorGral";
+            this.lblErrorGral.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorGral.TabIndex = 13;
+            // 
             // frmBusqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +233,7 @@ namespace OneProject.Medical.Forms
         private System.Windows.Forms.TextBox txtMaterno;
         private System.Windows.Forms.CheckBox chkFechaReg;
         private System.Windows.Forms.BindingSource bSourceDatos;
+        private System.Windows.Forms.Label lblErrorGral;
     }
 }
 

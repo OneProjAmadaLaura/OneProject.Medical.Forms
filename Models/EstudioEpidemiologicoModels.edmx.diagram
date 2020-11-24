@@ -26,6 +26,7 @@
         <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Laboratorio_DatosGenerales" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Tratamiento_DatosGenerales" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioEpidemiologicoModel.FK_Viaje_DatosGenerales" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EstudioEpidemiologicoModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

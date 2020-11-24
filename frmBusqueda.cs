@@ -22,21 +22,7 @@ namespace OneProject.Medical.Forms
 
             this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             this.dgvEstudios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellDoubleClick);
-
-
-            //this.dgvEstudios.CellValueChanged += dgvEstudios_CellValueChanged;
-
-
-            //dgvEstudios.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Index" });
-            //bNavDatos.BindingSource = bSourceDatos;
-
-
-            //bSourceDatos.CurrentChanged += new System.EventHandler();
-            //bSourceDatos.DataSource=new pageoff
-
-            //bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChanged);
-            //bindingSource1.DataSource = new PageOffsetList();
-
+                            
         }
 
         private void frmBusqueda_Load(object sender, EventArgs e)
@@ -63,86 +49,100 @@ namespace OneProject.Medical.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Buscar();
+            try
+            {
+                Buscar();
+            }
+
+            catch(Exception ex)
+            {
+                lblErrorGral.Text = ex.Message;
+            }
         }
 
 
         private void Buscar()
         {
-
-            int iEstatus = 0;
-            using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+            try
             {
-                var lst = (from d in tablas.DatosGenerales
-                           select new
-                           {
-                               Identificador = d.IdPersona,
-                               ApellidoPaterno = d.PrimerApellido,
-                               ApellidoMaterno = d.SegundoApellido,
-                               d.Nombres,
-                               FechaRegistro = d.FechaRegistro,
-                               d.FolioPago,
-                               FechaPago = d.FechaPago,
-                               FechaImpresion = d.FechaImpresion,
-                               FechaAplicacionPrueba = d.FechaPrueba,
-                           }).AsQueryable();
-
-                if (txtNombre.Text.Trim().Length > 0)
+                int iEstatus = 0;
+                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
                 {
-                    lst = lst.Where(d => d.Nombres.Contains(txtNombre.Text.Trim()));
-                }
+                    var lst = (from d in tablas.DatosGenerales
+                               select new
+                               {
+                                   Identificador = d.IdPersona,
+                                   ApellidoPaterno = d.PrimerApellido,
+                                   ApellidoMaterno = d.SegundoApellido,
+                                   d.Nombres,
+                                   FechaRegistro = d.FechaRegistro,
+                                   d.FolioPago,
+                                   FechaPago = d.FechaPago,
+                                   FechaImpresion = d.FechaImpresion,
+                                   FechaAplicacionPrueba = d.FechaPrueba,
+                               }).AsQueryable();
 
-                if (txtPaterno.Text.Trim().Length > 0)
-                {
-                    lst = lst.Where(d => d.ApellidoPaterno.Contains(txtPaterno.Text.Trim()));
-                }
-
-                if (txtMaterno.Text.Trim().Length > 0)
-                {
-                    lst = lst.Where(d => d.ApellidoMaterno.Contains(txtMaterno.Text.Trim()));
-                }
-
-                iEstatus = Convert.ToInt32(cboEstatus.SelectedValue);
-
-                if (iEstatus > 0)
-                {
-                    switch (iEstatus)
+                    if (txtNombre.Text.Trim().Length > 0)
                     {
-                        case 1:
-                            // Captura
-                            lst = lst.Where(d => d.FechaPago == null);
-                            break;
-                        case 2:
-                            // Pagado
-                            lst = lst.Where(d => d.FechaPago != null && d.FechaImpresion == null);
-                            break;
-                        case 3:
-                            // Impreso
-                            lst = lst.Where(d => d.FechaImpresion != null && d.FechaAplicacionPrueba == null);
-                            break;
-                        case 4:
-                            // Prueba tomada
-                            lst = lst.Where(d => d.FechaAplicacionPrueba != null);
-                            break;
+                        lst = lst.Where(d => d.Nombres.Contains(txtNombre.Text.Trim()));
                     }
 
+                    if (txtPaterno.Text.Trim().Length > 0)
+                    {
+                        lst = lst.Where(d => d.ApellidoPaterno.Contains(txtPaterno.Text.Trim()));
+                    }
+
+                    if (txtMaterno.Text.Trim().Length > 0)
+                    {
+                        lst = lst.Where(d => d.ApellidoMaterno.Contains(txtMaterno.Text.Trim()));
+                    }
+
+                    iEstatus = Convert.ToInt32(cboEstatus.SelectedValue);
+
+                    if (iEstatus > 0)
+                    {
+                        switch (iEstatus)
+                        {
+                            case 1:
+                                // Captura
+                                lst = lst.Where(d => d.FechaPago == null);
+                                break;
+                            case 2:
+                                // Pagado
+                                lst = lst.Where(d => d.FechaPago != null && d.FechaImpresion == null);
+                                break;
+                            case 3:
+                                // Impreso
+                                lst = lst.Where(d => d.FechaImpresion != null && d.FechaAplicacionPrueba == null);
+                                break;
+                            case 4:
+                                // Prueba tomada
+                                lst = lst.Where(d => d.FechaAplicacionPrueba != null);
+                                break;
+                        }
+
+                    }
+
+                    if (txtMaterno.Text.Trim().Length > 0)
+                    {
+                        lst = lst.Where(d => d.ApellidoMaterno.Contains(txtMaterno.Text.Trim()));
+                    }
+
+                    if (chkFechaReg.Checked)
+                    {
+                        DateTime fec = DateTime.Parse(dtpFechaReg.Value.ToString("dd/MM/yyyy"));
+                        DateTime fecComodin = DateTime.Parse(fec.AddDays(1).ToString("dd/MM/yyyy"));
+
+                        lst = lst.Where(d => d.FechaRegistro >= fec && d.FechaRegistro <= fecComodin);
+                    }
+
+                    dgvEstudios.DataSource = lst.ToList();
+
                 }
-
-                if (txtMaterno.Text.Trim().Length > 0)
-                {
-                    lst = lst.Where(d => d.ApellidoMaterno.Contains(txtMaterno.Text.Trim()));
-                }
-
-                if (chkFechaReg.Checked)
-                {
-                    DateTime fec = DateTime.Parse(dtpFechaReg.Value.ToString("dd/MM/yyyy"));
-                    DateTime fecComodin = DateTime.Parse(fec.AddDays(1).ToString("dd/MM/yyyy"));
-
-                    lst = lst.Where(d => d.FechaRegistro >= fec && d.FechaRegistro <= fecComodin);
-                }
-
-                dgvEstudios.DataSource = lst.ToList();
-
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
             }
         }
 

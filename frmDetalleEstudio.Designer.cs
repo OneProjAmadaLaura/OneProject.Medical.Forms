@@ -29,6 +29,7 @@ namespace OneProject.Medical.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleEstudio));
             this.lblMaterno = new System.Windows.Forms.Label();
             this.lblPaterno = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@ namespace OneProject.Medical.Forms
             this.txtFolioPago = new System.Windows.Forms.TextBox();
             this.lblReqFolio = new System.Windows.Forms.Label();
             this.lblErrorReq = new System.Windows.Forms.Label();
+            this.lblErrorGeneral = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMaterno
@@ -78,35 +81,47 @@ namespace OneProject.Medical.Forms
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(170, 201);
+            this.btnImprimir.Enabled = false;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImprimir.Location = new System.Drawing.Point(175, 185);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(106, 33);
-            this.btnImprimir.TabIndex = 18;
+            this.btnImprimir.Size = new System.Drawing.Size(135, 66);
+            this.btnImprimir.TabIndex = 2;
             this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Visible = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnRegistrarPago
             // 
-            this.btnRegistrarPago.Location = new System.Drawing.Point(425, 117);
+            this.btnRegistrarPago.Enabled = false;
+            this.btnRegistrarPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarPago.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarPago.Image")));
+            this.btnRegistrarPago.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRegistrarPago.Location = new System.Drawing.Point(36, 185);
             this.btnRegistrarPago.Name = "btnRegistrarPago";
-            this.btnRegistrarPago.Size = new System.Drawing.Size(106, 33);
-            this.btnRegistrarPago.TabIndex = 19;
+            this.btnRegistrarPago.Size = new System.Drawing.Size(135, 66);
+            this.btnRegistrarPago.TabIndex = 1;
             this.btnRegistrarPago.Text = "Registrar pago";
+            this.btnRegistrarPago.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRegistrarPago.UseVisualStyleBackColor = true;
-            this.btnRegistrarPago.Visible = false;
             this.btnRegistrarPago.Click += new System.EventHandler(this.btnRegistrarPago_Click);
             // 
             // btnRegistrarPrueba
             // 
-            this.btnRegistrarPrueba.Location = new System.Drawing.Point(291, 201);
+            this.btnRegistrarPrueba.Enabled = false;
+            this.btnRegistrarPrueba.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarPrueba.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarPrueba.Image")));
+            this.btnRegistrarPrueba.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRegistrarPrueba.Location = new System.Drawing.Point(316, 185);
             this.btnRegistrarPrueba.Name = "btnRegistrarPrueba";
-            this.btnRegistrarPrueba.Size = new System.Drawing.Size(106, 33);
-            this.btnRegistrarPrueba.TabIndex = 20;
+            this.btnRegistrarPrueba.Size = new System.Drawing.Size(135, 66);
+            this.btnRegistrarPrueba.TabIndex = 3;
             this.btnRegistrarPrueba.Text = "Registrar prueba";
+            this.btnRegistrarPrueba.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRegistrarPrueba.UseVisualStyleBackColor = true;
-            this.btnRegistrarPrueba.Visible = false;
             this.btnRegistrarPrueba.Click += new System.EventHandler(this.btnRegistrarPrueba_Click);
             // 
             // lblIdentificador
@@ -175,8 +190,8 @@ namespace OneProject.Medical.Forms
             this.txtFolioPago.Location = new System.Drawing.Point(171, 122);
             this.txtFolioPago.MaxLength = 20;
             this.txtFolioPago.Name = "txtFolioPago";
-            this.txtFolioPago.Size = new System.Drawing.Size(222, 23);
-            this.txtFolioPago.TabIndex = 28;
+            this.txtFolioPago.Size = new System.Drawing.Size(225, 23);
+            this.txtFolioPago.TabIndex = 0;
             this.txtFolioPago.TextChanged += new System.EventHandler(this.txtFolioPago_TextChanged);
             // 
             // lblReqFolio
@@ -201,11 +216,37 @@ namespace OneProject.Medical.Forms
             this.lblErrorReq.Text = "Este dato es requerido";
             this.lblErrorReq.Visible = false;
             // 
+            // lblErrorGeneral
+            // 
+            this.lblErrorGeneral.AutoSize = true;
+            this.lblErrorGeneral.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorGeneral.Location = new System.Drawing.Point(37, 260);
+            this.lblErrorGeneral.Name = "lblErrorGeneral";
+            this.lblErrorGeneral.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorGeneral.TabIndex = 31;
+            this.lblErrorGeneral.Visible = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(455, 185);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(135, 66);
+            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // frmDetalleEstudio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 289);
+            this.ClientSize = new System.Drawing.Size(602, 278);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.lblErrorGeneral);
             this.Controls.Add(this.lblErrorReq);
             this.Controls.Add(this.lblReqFolio);
             this.Controls.Add(this.txtFolioPago);
@@ -248,5 +289,7 @@ namespace OneProject.Medical.Forms
         private System.Windows.Forms.TextBox txtFolioPago;
         private System.Windows.Forms.Label lblReqFolio;
         private System.Windows.Forms.Label lblErrorReq;
+        private System.Windows.Forms.Label lblErrorGeneral;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
