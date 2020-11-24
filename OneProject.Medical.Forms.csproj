@@ -196,9 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Formatos\Salidas\" />
-    <Folder Include="Imagenes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes\cancelar.gif" />
+    <Content Include="Imagenes\imprimir.gif" />
+    <Content Include="Imagenes\pago.gif" />
+    <Content Include="Imagenes\prueba.gif" />
     <Content Include="Models\EstudioEpidemiologicoModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EstudioEpidemiologicoModels.edmx</DependentUpon>
