@@ -14,6 +14,7 @@ using System.Configuration;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace OneProject.Medical.Forms
 {
@@ -148,36 +149,27 @@ namespace OneProject.Medical.Forms
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            try
+            string archivo = "";
+            archivo = generarArchivo();
+
+            if (editarArchivo(archivo))
             {
+                // Falta pasarlo a PDF e imprimir
 
-                DialogResult dr = MessageBox.Show("¿Está seguro que quiere imprimir el estudio?", "Consulta",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DatosGenerales oTabla = null;
 
-                if (dr == DialogResult.Yes)
+                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
                 {
-                    string archivo = "";
-                    archivo = generarArchivo();
+                    oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
 
-                    if (editarArchivo(archivo))
-                    {
-                        // Falta pasarlo a PDF e imprimir
+                    oTabla.FechaImpresion = DateTime.Now;
 
-                        DatosGenerales oTabla = null;
-
-                        using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
-                        {
-                            oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
-
-                            oTabla.FechaImpresion = DateTime.Now;
-
-                            tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                            tablas.SaveChanges();
-                            this.Close();
-                        }
-                    }
+                    tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                    tablas.SaveChanges();
+                    this.Close();
                 }
             }
+        }
 
             catch (Exception ex)
             {
@@ -204,17 +196,9 @@ namespace OneProject.Medical.Forms
 
                         oTabla.FechaPrueba = DateTime.Now;
 
-                        tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                        tablas.SaveChanges();
-                        this.Close();
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                lblErrorGeneral.Text = ex.Message;
-
+                tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                tablas.SaveChanges();
+                this.Close();
             }
         }
 
@@ -297,5 +281,9 @@ namespace OneProject.Medical.Forms
         {
             this.Close();
         }
+
+
+
+      
     }
 }
