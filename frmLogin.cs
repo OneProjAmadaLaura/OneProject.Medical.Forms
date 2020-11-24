@@ -21,6 +21,7 @@ namespace OneProject.Medical.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (txtUsuario.Text.Trim().Length == 0 && txtContraseña.Text.Trim().Length == 0)
             {
                 lblRequeridoUsu.Visible = true;
@@ -71,6 +72,7 @@ namespace OneProject.Medical.Forms
             {
                 lblRequeridoUsu.Visible = true;
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)

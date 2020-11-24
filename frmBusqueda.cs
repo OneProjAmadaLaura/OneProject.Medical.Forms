@@ -56,7 +56,9 @@ namespace OneProject.Medical.Forms
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 Buscar();
+                Cursor.Current = Cursors.Default;
             }
 
             catch(Exception ex)
@@ -77,9 +79,9 @@ namespace OneProject.Medical.Forms
                                select new
                                {
                                    Identificador = d.IdPersona,
+                                   d.Nombres,
                                    ApellidoPaterno = d.PrimerApellido,
                                    ApellidoMaterno = d.SegundoApellido,
-                                   d.Nombres,
                                    FechaRegistro = d.FechaRegistro,
                                    d.FolioPago,
                                    FechaPago = d.FechaPago,
@@ -200,8 +202,9 @@ namespace OneProject.Medical.Forms
 
                 frmDetalleEstudio detalle = new frmDetalleEstudio(dat);
                 detalle.ShowDialog();
-
+                Cursor.Current = Cursors.WaitCursor;
                 Buscar();
+                Cursor.Current = Cursors.Default;
 
             }
 

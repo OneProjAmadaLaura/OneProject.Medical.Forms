@@ -198,12 +198,14 @@ namespace OneProject.Medical.Forms
             // 
             this.lblReqFolio.AutoSize = true;
             this.lblReqFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReqFolio.Location = new System.Drawing.Point(154, 125);
+            this.lblReqFolio.ForeColor = System.Drawing.Color.Red;
+            this.lblReqFolio.Location = new System.Drawing.Point(22, 128);
             this.lblReqFolio.Name = "lblReqFolio";
             this.lblReqFolio.Size = new System.Drawing.Size(14, 17);
             this.lblReqFolio.TabIndex = 29;
             this.lblReqFolio.Text = "*";
             this.lblReqFolio.Visible = false;
+            this.lblReqFolio.Click += new System.EventHandler(this.lblReqFolio_Click);
             // 
             // lblErrorReq
             // 
@@ -245,6 +247,7 @@ namespace OneProject.Medical.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 278);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblErrorGeneral);
             this.Controls.Add(this.lblErrorReq);

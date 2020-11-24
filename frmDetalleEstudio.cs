@@ -738,6 +738,10 @@ namespace OneProject.Medical.Forms
             this.Close();
         }
 
+        private void lblReqFolio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
