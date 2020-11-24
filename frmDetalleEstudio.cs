@@ -51,6 +51,10 @@ namespace OneProject.Medical.Forms
         {
             try
             {
+                btnRegistrarPago.Enabled = false;
+                btnImprimir.Enabled = false;
+                btnRegistrarPrueba.Enabled = false;
+
                 using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
                 {
                     dat = tablas.DatosGenerales.Find(datEnt.IdPersona);
@@ -129,7 +133,7 @@ namespace OneProject.Medical.Forms
 
                             tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
                             tablas.SaveChanges();
-                            this.Close();
+                            cargaDatos();
                         }
                     }
                 }
@@ -594,19 +598,18 @@ namespace OneProject.Medical.Forms
                 excelApp.Quit();
 
 
-                //    DatosGenerales oTabla = null;
+                DatosGenerales oTabla = null;
 
-                //    using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
-                //    {
-                //        oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
+                using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
+                {
+                    oTabla = tablas.DatosGenerales.Find(dat.IdPersona);
 
-                //        oTabla.FechaImpresion = DateTime.Now;
+                    oTabla.FechaImpresion = DateTime.Now;
 
-                //        tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
-                //        tablas.SaveChanges();
-                //        this.Close();
-                //    }
-
+                    tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
+                    tablas.SaveChanges();
+                    cargaDatos();
+                }
 
             }
             catch (Exception theException)

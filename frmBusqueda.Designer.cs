@@ -30,7 +30,9 @@ namespace OneProject.Medical.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBusqueda));
             this.splitContainerPrincipal = new System.Windows.Forms.SplitContainer();
+            this.lblErrorGral = new System.Windows.Forms.Label();
             this.chkFechaReg = new System.Windows.Forms.CheckBox();
             this.lblMaterno = new System.Windows.Forms.Label();
             this.txtMaterno = new System.Windows.Forms.TextBox();
@@ -44,7 +46,6 @@ namespace OneProject.Medical.Forms
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvEstudios = new System.Windows.Forms.DataGridView();
             this.bSourceDatos = new System.Windows.Forms.BindingSource(this.components);
-            this.lblErrorGral = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrincipal)).BeginInit();
             this.splitContainerPrincipal.Panel1.SuspendLayout();
             this.splitContainerPrincipal.Panel2.SuspendLayout();
@@ -83,12 +84,22 @@ namespace OneProject.Medical.Forms
             this.splitContainerPrincipal.SplitterDistance = 85;
             this.splitContainerPrincipal.TabIndex = 0;
             // 
+            // lblErrorGral
+            // 
+            this.lblErrorGral.AutoSize = true;
+            this.lblErrorGral.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorGral.Location = new System.Drawing.Point(549, 67);
+            this.lblErrorGral.Name = "lblErrorGral";
+            this.lblErrorGral.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorGral.TabIndex = 13;
+            // 
             // chkFechaReg
             // 
             this.chkFechaReg.AutoSize = true;
+            this.chkFechaReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFechaReg.Location = new System.Drawing.Point(12, 11);
             this.chkFechaReg.Name = "chkFechaReg";
-            this.chkFechaReg.Size = new System.Drawing.Size(96, 17);
+            this.chkFechaReg.Size = new System.Drawing.Size(122, 19);
             this.chkFechaReg.TabIndex = 12;
             this.chkFechaReg.Text = "Fecha registro:";
             this.chkFechaReg.UseVisualStyleBackColor = true;
@@ -97,84 +108,96 @@ namespace OneProject.Medical.Forms
             // lblMaterno
             // 
             this.lblMaterno.AutoSize = true;
-            this.lblMaterno.Location = new System.Drawing.Point(217, 67);
+            this.lblMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaterno.Location = new System.Drawing.Point(186, 64);
             this.lblMaterno.Name = "lblMaterno";
-            this.lblMaterno.Size = new System.Drawing.Size(88, 13);
+            this.lblMaterno.Size = new System.Drawing.Size(120, 15);
             this.lblMaterno.TabIndex = 11;
             this.lblMaterno.Text = "Apellido materno:";
             // 
             // txtMaterno
             // 
-            this.txtMaterno.Location = new System.Drawing.Point(305, 61);
+            this.txtMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaterno.Location = new System.Drawing.Point(305, 60);
             this.txtMaterno.Name = "txtMaterno";
-            this.txtMaterno.Size = new System.Drawing.Size(216, 20);
+            this.txtMaterno.Size = new System.Drawing.Size(216, 21);
             this.txtMaterno.TabIndex = 10;
             // 
             // lblPaterno
             // 
             this.lblPaterno.AutoSize = true;
-            this.lblPaterno.Location = new System.Drawing.Point(217, 42);
+            this.lblPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaterno.Location = new System.Drawing.Point(186, 39);
             this.lblPaterno.Name = "lblPaterno";
-            this.lblPaterno.Size = new System.Drawing.Size(86, 13);
+            this.lblPaterno.Size = new System.Drawing.Size(116, 15);
             this.lblPaterno.TabIndex = 9;
             this.lblPaterno.Text = "Apellido paterno:";
             // 
             // txtPaterno
             // 
-            this.txtPaterno.Location = new System.Drawing.Point(305, 36);
+            this.txtPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaterno.Location = new System.Drawing.Point(305, 35);
             this.txtPaterno.Name = "txtPaterno";
-            this.txtPaterno.Size = new System.Drawing.Size(216, 20);
+            this.txtPaterno.Size = new System.Drawing.Size(216, 21);
             this.txtPaterno.TabIndex = 8;
             // 
             // cboEstatus
             // 
+            this.cboEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstatus.FormattingEnabled = true;
-            this.cboEstatus.Location = new System.Drawing.Point(598, 39);
+            this.cboEstatus.Location = new System.Drawing.Point(537, 35);
             this.cboEstatus.Name = "cboEstatus";
-            this.cboEstatus.Size = new System.Drawing.Size(100, 21);
+            this.cboEstatus.Size = new System.Drawing.Size(100, 23);
             this.cboEstatus.TabIndex = 7;
             // 
             // lblEstatus
             // 
             this.lblEstatus.AutoSize = true;
-            this.lblEstatus.Location = new System.Drawing.Point(549, 42);
+            this.lblEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstatus.Location = new System.Drawing.Point(534, 12);
             this.lblEstatus.Name = "lblEstatus";
-            this.lblEstatus.Size = new System.Drawing.Size(45, 13);
+            this.lblEstatus.Size = new System.Drawing.Size(58, 15);
             this.lblEstatus.TabIndex = 6;
             this.lblEstatus.Text = "Estatus:";
             // 
             // dtpFechaReg
             // 
             this.dtpFechaReg.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaReg.Location = new System.Drawing.Point(12, 35);
             this.dtpFechaReg.Name = "dtpFechaReg";
-            this.dtpFechaReg.Size = new System.Drawing.Size(84, 20);
+            this.dtpFechaReg.Size = new System.Drawing.Size(84, 21);
             this.dtpFechaReg.TabIndex = 5;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(217, 16);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(186, 12);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(61, 13);
+            this.lblNombre.Size = new System.Drawing.Size(83, 15);
             this.lblNombre.TabIndex = 3;
             this.lblNombre.Text = "Nombre (s):";
             // 
             // txtNombre
             // 
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(305, 9);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(216, 20);
+            this.txtNombre.Size = new System.Drawing.Size(216, 21);
             this.txtNombre.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(722, 32);
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(724, 9);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(135, 66);
             this.btnBuscar.TabIndex = 0;
             this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -187,15 +210,6 @@ namespace OneProject.Medical.Forms
             this.dgvEstudios.Size = new System.Drawing.Size(905, 421);
             this.dgvEstudios.TabIndex = 0;
             this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
-            // 
-            // lblErrorGral
-            // 
-            this.lblErrorGral.AutoSize = true;
-            this.lblErrorGral.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorGral.Location = new System.Drawing.Point(549, 67);
-            this.lblErrorGral.Name = "lblErrorGral";
-            this.lblErrorGral.Size = new System.Drawing.Size(0, 13);
-            this.lblErrorGral.TabIndex = 13;
             // 
             // frmBusqueda
             // 
