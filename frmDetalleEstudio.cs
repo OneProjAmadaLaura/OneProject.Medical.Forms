@@ -646,7 +646,8 @@ namespace OneProject.Medical.Forms
 
                         tablas.Entry(oTabla).State = System.Data.Entity.EntityState.Modified;
                         tablas.SaveChanges();
-                        this.Close();
+
+                        cargaDatos();
                     }
                 }
 
