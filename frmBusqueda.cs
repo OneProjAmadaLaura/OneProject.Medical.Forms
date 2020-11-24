@@ -22,7 +22,10 @@ namespace OneProject.Medical.Forms
 
             this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             this.dgvEstudios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellDoubleClick);
-                            
+
+
+            this.dgvEstudios.DataBindingComplete+= new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvEstudios_DataBindingComplete);
+
         }
 
         private void frmBusqueda_Load(object sender, EventArgs e)
@@ -44,6 +47,8 @@ namespace OneProject.Medical.Forms
             cboEstatus.DataSource = listEstatus.ToList();
 
             cboEstatus.SelectedIndex = 1;
+
+            Buscar();
 
         }
 
@@ -156,6 +161,24 @@ namespace OneProject.Medical.Forms
 
         }
 
+        private void dgvEstudios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            colorFila(dgvEstudios);
+        }
+
+        private void colorFila(DataGridView datagrid)
+        {
+            foreach (DataGridViewRow row in datagrid.Rows)
+            {
+
+                if (Convert.ToBoolean(datagrid.Rows[row.Index].Cells[8].Value != null))
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                }
+            }
+        }
+
+
         private int? GetId()
         {
             try
@@ -170,20 +193,17 @@ namespace OneProject.Medical.Forms
         {
             int? idDetalle = GetId();
 
-            if (idDetalle != null)
+            if (idDetalle != null && dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[8].Value==null)
             {
                  DatosGenerales dat = new DatosGenerales();
                 dat.IdPersona =int.Parse(dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[0].Value.ToString());
-                dat.PrimerApellido = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[1].Value.ToString();
-                dat.SegundoApellido = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[2].Value.ToString();
-                dat.Nombres = dgvEstudios.Rows[dgvEstudios.CurrentRow.Index].Cells[3].Value.ToString();
 
                 frmDetalleEstudio detalle = new frmDetalleEstudio(dat);
                 detalle.ShowDialog();
 
-            }
+                Buscar();
 
-            Buscar();
+            }
 
         }
     }

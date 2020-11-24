@@ -31,6 +31,7 @@ namespace OneProject.Medical.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBusqueda));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainerPrincipal = new System.Windows.Forms.SplitContainer();
             this.lblErrorGral = new System.Windows.Forms.Label();
             this.chkFechaReg = new System.Windows.Forms.CheckBox();
@@ -147,7 +148,7 @@ namespace OneProject.Medical.Forms
             this.cboEstatus.FormattingEnabled = true;
             this.cboEstatus.Location = new System.Drawing.Point(537, 35);
             this.cboEstatus.Name = "cboEstatus";
-            this.cboEstatus.Size = new System.Drawing.Size(100, 23);
+            this.cboEstatus.Size = new System.Drawing.Size(114, 23);
             this.cboEstatus.TabIndex = 7;
             // 
             // lblEstatus
@@ -190,6 +191,7 @@ namespace OneProject.Medical.Forms
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscar.Location = new System.Drawing.Point(724, 9);
@@ -204,9 +206,18 @@ namespace OneProject.Medical.Forms
             // dgvEstudios
             // 
             this.dgvEstudios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEstudios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEstudios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEstudios.Location = new System.Drawing.Point(0, 0);
             this.dgvEstudios.Name = "dgvEstudios";
+            this.dgvEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEstudios.Size = new System.Drawing.Size(905, 421);
             this.dgvEstudios.TabIndex = 0;
             this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
@@ -217,6 +228,7 @@ namespace OneProject.Medical.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 510);
             this.Controls.Add(this.splitContainerPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBusqueda";
             this.Text = "Búsqueda";
             this.Load += new System.EventHandler(this.frmBusqueda_Load);

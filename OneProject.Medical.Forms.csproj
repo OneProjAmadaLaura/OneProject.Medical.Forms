@@ -198,10 +198,22 @@
     <Folder Include="Formatos\Salidas\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes\azul\buscar-36px.gif" />
+    <Content Include="Imagenes\azul\imprimir-36px.gif" />
+    <Content Include="Imagenes\azul\pago-tarjeta-36px.gif" />
+    <Content Include="Imagenes\azul\prueba-36px.gif" />
+    <Content Include="Imagenes\azul\salir-36px.gif" />
     <Content Include="Imagenes\cancelar.gif" />
+    <Content Include="Imagenes\color\impresora.png" />
+    <Content Include="Imagenes\color\lupa.png" />
+    <Content Include="Imagenes\color\pago.png" />
+    <Content Include="Imagenes\color\prueba.png" />
+    <Content Include="Imagenes\color\salr.png" />
     <Content Include="Imagenes\imprimir.gif" />
     <Content Include="Imagenes\pago.gif" />
     <Content Include="Imagenes\prueba.gif" />
+    <Content Include="Imagenes\pruebae.ico" />
+    <Content Include="Imagenes\seguridad.png" />
     <Content Include="Models\EstudioEpidemiologicoModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EstudioEpidemiologicoModels.edmx</DependentUpon>

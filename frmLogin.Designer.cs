@@ -45,16 +45,16 @@ namespace OneProject.Medical.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(324, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(363, 41);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(281, 245);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 137);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtUsuario
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(111, 74);
+            this.txtUsuario.Location = new System.Drawing.Point(111, 47);
             this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(188, 21);
@@ -64,7 +64,7 @@ namespace OneProject.Medical.Forms
             // txtContraseña
             // 
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContraseña.Location = new System.Drawing.Point(111, 115);
+            this.txtContraseña.Location = new System.Drawing.Point(111, 88);
             this.txtContraseña.MaxLength = 20;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
@@ -75,29 +75,29 @@ namespace OneProject.Medical.Forms
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(31, 77);
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(31, 50);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(50, 15);
+            this.lblUsuario.Size = new System.Drawing.Size(57, 15);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Usuario";
             // 
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseña.Location = new System.Drawing.Point(31, 122);
+            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseña.Location = new System.Drawing.Point(31, 91);
             this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(70, 15);
+            this.lblContraseña.Size = new System.Drawing.Size(80, 15);
             this.lblContraseña.TabIndex = 4;
             this.lblContraseña.Text = "Contraseña";
             // 
             // btnLogin
             // 
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(44, 168);
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(44, 141);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(255, 32);
+            this.btnLogin.Size = new System.Drawing.Size(255, 35);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@ namespace OneProject.Medical.Forms
             // 
             this.lblRequeridoUsu.AutoSize = true;
             this.lblRequeridoUsu.ForeColor = System.Drawing.Color.Red;
-            this.lblRequeridoUsu.Location = new System.Drawing.Point(108, 99);
+            this.lblRequeridoUsu.Location = new System.Drawing.Point(108, 72);
             this.lblRequeridoUsu.Name = "lblRequeridoUsu";
             this.lblRequeridoUsu.Size = new System.Drawing.Size(113, 13);
             this.lblRequeridoUsu.TabIndex = 31;
@@ -118,7 +118,7 @@ namespace OneProject.Medical.Forms
             // 
             this.lblRequeridoPass.AutoSize = true;
             this.lblRequeridoPass.ForeColor = System.Drawing.Color.Red;
-            this.lblRequeridoPass.Location = new System.Drawing.Point(108, 139);
+            this.lblRequeridoPass.Location = new System.Drawing.Point(108, 112);
             this.lblRequeridoPass.Name = "lblRequeridoPass";
             this.lblRequeridoPass.Size = new System.Drawing.Size(113, 13);
             this.lblRequeridoPass.TabIndex = 32;
@@ -129,7 +129,7 @@ namespace OneProject.Medical.Forms
             // 
             this.lblErrorGral.AutoSize = true;
             this.lblErrorGral.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorGral.Location = new System.Drawing.Point(68, 152);
+            this.lblErrorGral.Location = new System.Drawing.Point(68, 125);
             this.lblErrorGral.Name = "lblErrorGral";
             this.lblErrorGral.Size = new System.Drawing.Size(209, 13);
             this.lblErrorGral.TabIndex = 33;
@@ -140,7 +140,7 @@ namespace OneProject.Medical.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 246);
+            this.ClientSize = new System.Drawing.Size(572, 207);
             this.Controls.Add(this.lblErrorGral);
             this.Controls.Add(this.lblRequeridoPass);
             this.Controls.Add(this.lblRequeridoUsu);
@@ -150,8 +150,11 @@ namespace OneProject.Medical.Forms
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
-            this.Text = "frmLogin";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
