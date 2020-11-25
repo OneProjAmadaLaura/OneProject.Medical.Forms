@@ -281,7 +281,7 @@ namespace OneProject.Medical.Forms
                         excelWorksheet.Range["F21"].Value = "X";
 
 
-                    excelWorksheet.Range["F21"].Value = generales.PaisOrigen;
+                    excelWorksheet.Range["J21"].Value = generales.PaisOrigen;
                     excelWorksheet.Range["R21"].Value = generales.NoExpedienteSeguridadSocial;
                     excelWorksheet.Range["E23"].Value = generales.EntidadNacimiento;
                     excelWorksheet.Range["O23"].Value = generales.EntidadDelegacionResidencia;
@@ -456,8 +456,7 @@ namespace OneProject.Medical.Forms
                     else if (unidadMedica.TipPaciente.Equals("H"))
                         excelWorksheet.Range["R104"].Value = "X";
 
-
-                    excelWorksheet.Range["P118"].Value = unidadMedica.FechaIngresoUnidad;
+                    excelWorksheet.Range["F106"].Value = unidadMedica.FechaIngresoUnidad;
                     writeBool(excelWorksheet, "P106", "R106", unidadMedica.CasoIngresadoUCI);
                     writeBool(excelWorksheet, "P108", "R108", unidadMedica.CasoIntubado);
                     writeBool(excelWorksheet, "R110", "S110", unidadMedica.CasoDiagnostNeumoniaClinica);
