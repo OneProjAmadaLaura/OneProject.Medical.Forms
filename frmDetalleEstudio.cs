@@ -566,7 +566,7 @@ namespace OneProject.Medical.Forms
                             excelWorksheet.Range["G" + numCeldaContacto].Value = contacto.Sexo;
 
                         excelWorksheet.Range["H" + numCeldaContacto].Value = contacto.Edad;
-                        excelWorksheet.Range["J" + numCeldaContacto].Value = contacto.TipoContactoIDoED;
+                        excelWorksheet.Range["I" + numCeldaContacto].Value = contacto.TipoContactoIDoED;
                         excelWorksheet.Range["K" + numCeldaContacto].Value = contacto.CorreoElectronico;
                         excelWorksheet.Range["M" + numCeldaContacto].Value = contacto.SignosSintomas;
                         excelWorksheet.Range["R" + numCeldaContacto].Value = contacto.Observaciones;
