@@ -63,6 +63,7 @@ namespace OneProject.Medical.Forms
             // 
             // txtContraseña
             // 
+            this.txtContraseña.AcceptsReturn = true;
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.Location = new System.Drawing.Point(111, 88);
             this.txtContraseña.MaxLength = 20;
@@ -156,6 +157,7 @@ namespace OneProject.Medical.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autenticación";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

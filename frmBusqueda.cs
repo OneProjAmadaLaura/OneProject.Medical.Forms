@@ -20,9 +20,7 @@ namespace OneProject.Medical.Forms
         {
             InitializeComponent();
 
-            this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             this.dgvEstudios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellDoubleClick);
-
 
             this.dgvEstudios.DataBindingComplete+= new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvEstudios_DataBindingComplete);
 
@@ -158,14 +156,27 @@ namespace OneProject.Medical.Forms
             dtpFechaReg.Enabled = chkFechaReg.Checked;
         }
 
-        private void dgvEstudios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dgvEstudios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             colorFila(dgvEstudios);
+
+            dgvEstudios.Columns[0].Width = 100;
+            dgvEstudios.Columns[1].Width = 200;
+            dgvEstudios.Columns[2].Width = 200;
+            dgvEstudios.Columns[3].Width = 200;
+            dgvEstudios.Columns[4].Width = 130;
+            dgvEstudios.Columns[5].Width = 130;
+            dgvEstudios.Columns[6].Width = 130;
+            dgvEstudios.Columns[7].Width = 130;
+            dgvEstudios.Columns[8].Width = 130;
+
+            DataGridViewCellStyle dgvColumnHeaderStyle = new DataGridViewCellStyle();
+
+            dgvColumnHeaderStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvEstudios.ColumnHeadersDefaultCellStyle = dgvColumnHeaderStyle;
+
         }
 
         private void colorFila(DataGridView datagrid)
