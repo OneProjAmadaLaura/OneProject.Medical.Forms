@@ -17,6 +17,7 @@ namespace OneProject.Medical.Forms
         public frmLogin()
         {
             InitializeComponent();
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -94,5 +95,6 @@ namespace OneProject.Medical.Forms
             else
                 txtContraseña.Visible = true;
         }
+           
     }
 }

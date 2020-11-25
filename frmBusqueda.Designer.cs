@@ -220,7 +220,6 @@ namespace OneProject.Medical.Forms
             this.dgvEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEstudios.Size = new System.Drawing.Size(905, 421);
             this.dgvEstudios.TabIndex = 0;
-            this.dgvEstudios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudios_CellContentClick);
             // 
             // frmBusqueda
             // 
