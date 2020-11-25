@@ -35,21 +35,28 @@ namespace OneProject.Medical.Forms
                 {
                     int exito = 0;
 
-                    List<int> lst = new List<int>();
+                    List<Usuario> lst = new List<Usuario>();
+
+                    string user = txtUsuario.Text.Trim();
+                    string pass = txtContraseña.Text.Trim();
 
                     using (EstudioEpidemiologicoEntities tablas = new EstudioEpidemiologicoEntities())
                     {
-                        string user = txtUsuario.Text.Trim();
-                        string pass = txtContraseña.Text.Trim();
 
                         lst = (from d in tablas.Usuario
                                   where d.Usuario1 == user
                                   && d.Contrasenia == pass
-                                  select d.IdUsuario).ToList();
+                                  select d).ToList();
 
                     }
 
-                    exito = (lst.Count>0)? lst[0]:0;
+                    if (lst.Count > 0)
+                    {
+                        if (txtUsuario.Text.Trim() == lst[0].Usuario1 && txtContraseña.Text.Trim() ==lst[0].Contrasenia)
+                        {
+                            exito= lst[0].IdUsuario;
+                        }
+                    }
 
                     if (exito > 0)
                     {
