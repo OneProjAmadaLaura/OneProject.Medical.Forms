@@ -408,8 +408,8 @@ namespace OneProject.Medical.Forms
 
 
                     //DATOS CLINICOS
-                    excelWorksheet.Range["C7"].Value = clinicos.IdPersona;
-                    excelWorksheet.Range["C7"].Value = clinicos.FechaInicioSintomas;
+                    
+                    excelWorksheet.Range["E81"].Value = clinicos.FechaInicioSintomas;
 
 
                     writeBool(excelWorksheet, "D85", "E85", clinicos.Fiebre);
@@ -475,7 +475,7 @@ namespace OneProject.Medical.Forms
                             excelWorksheet.Range["M116"].Value = "X";
 
 
-                    excelWorksheet.Range["C7"].Value = tratamiento.FechaInicioTrataAntipireticoAnalgesico;
+                    excelWorksheet.Range["P118"].Value = tratamiento.FechaInicioTrataAntipireticoAnalgesico;
 
 
                     excelWorksheet.Range["F121"].Value = tratamiento.Paracetamol ? "X" : "";
